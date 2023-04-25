@@ -1,23 +1,23 @@
 const {check} = require ('express-validator')
 
 const validator = [
-    check('name').exists().withMessage('Vui lòng nhập tên người dùng')
-        .notEmpty().withMessage('Tên người dùng không được để trống')
-        .isLength({ min: 2 }).withMessage('Tên người dùng quá ngắn'),
+    check('name').exists().withMessage('Please enter your full name')
+        .notEmpty().withMessage('Your name is required')
+        .isLength({ min: 2 }).withMessage('Name is too short'),
 
-    check('email').exists().withMessage('Vui lòng nhập email')
-        .notEmpty().withMessage('Email không được để trống')
-        .isEmail().withMessage('Email không hợp lệ'),
+    check('email').exists().withMessage('Please enter your email')
+        .notEmpty().withMessage('Email is required')
+        .isEmail().withMessage('Email is invalid'),
 
-    check('password').exists().withMessage('Vui lòng nhập mật khẩu')
-        .notEmpty().withMessage('Mật khẩu không được để trống')
-        .isLength({ min: 6 }).withMessage('Mật khẩu phải có ít nhất 6 kí tự'),
+    check('password').exists().withMessage('Please enter your password')
+        .notEmpty().withMessage('Password is required')
+        .isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
 
-    check('confirmPassword').exists().withMessage('Vui lòng nhập mật khẩu xác nhận')
-        .notEmpty().withMessage('Mật khẩu xác nhận không được để trống')
+    check('confirmPassword').exists().withMessage('Please enter your confirm password')
+        .notEmpty().withMessage('Confirm password is required')
         .custom((value, { req }) => {
             if (value !== req.body.password) {
-                throw new Error('Mật khẩu xác nhận không đúng');
+                throw new Error('Confirm password is incorrect');
             }
             return true
         })

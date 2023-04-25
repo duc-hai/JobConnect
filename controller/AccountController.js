@@ -1,11 +1,12 @@
 const Account = require('../models/Account')
-const {validationResult} = require('express-validator')
+const { validationResult } = require('express-validator')
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
+const jwt = require('jsonwebtoken')
 
 class AccountController {
-    async registerAccountRecruiter (req, res, next) {
-        const {name, email, password, confirmPassword} = req.body
+    async registerAccountRecruiter(req, res, next) {
+        const { name, email, password, confirmPassword } = req.body
         let result = validationResult(req)
         if (result.errors.length !== 0) {
             result = result.mapped()
@@ -19,10 +20,10 @@ class AccountController {
                 message: msg
             })
         }
-        
+
         try {
             //Check whether email is exist or not
-            let checkDuplicateEmail = await Account.findOne({email : email})
+            let checkDuplicateEmail = await Account.findOne({ email: email })
             if (checkDuplicateEmail) {
                 return res.status(403).json({
                     status: 'Error',
@@ -30,7 +31,7 @@ class AccountController {
                 })
             }
 
-            let newUser = new User ({
+            let newUser = new User({
                 fullName: name,
                 role: 2
             })
@@ -56,6 +57,42 @@ class AccountController {
                 message: err.message
             })
         }
+    }
+
+    async loginAccountRecruiter(req, res, next) {
+        const { email, password } = req.body
+        let result = validationResult(req)
+        if (result.errors.length !== 0) {
+            result = result.mapped()
+            let msg
+            for (let i in result) {
+                msg = result[i].msg
+                break
+            }
+            return res.status(400).json({
+                status: 'error',
+                message: msg
+            })
+        }
+
+        let account = await Account.findOne({ email: email }).lean()
+        if (!account) {
+            return res.status(400).json({ status: 'error', message: 'Email or password is incorrect' })
+        }
+        const matched = await bcrypt.compareSync(password, account.password);
+        if (!matched) {
+            return res.status(400).json({ status: 'error', message: 'Email or password is incorrect' })
+        }
+        //Account is correct: create access token and refresh token
+        let accessToken = jwt.sign({ userId: account.idUser, email: account.email }, process.env.ACCESS_TOKEN, { algorithm: 'HS256', expiresIn: '10h' })
+        let refreshToken = jwt.sign({ userId: account.idUser, email: account.email }, process.env.REFRESH_TOKEN)
+        res.cookie('accessToken', accessToken)
+        
+        return res.status(200).json({
+            status: 'OK',
+            access_token: accessToken,
+            refresh_token: refreshToken,
+        })
     }
 
 }
