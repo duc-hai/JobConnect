@@ -9,14 +9,8 @@ const recruitment = new Schema (
         createdAt: {type: Date},
         address: {
             street: String,
-            district: {
-                code: String,
-                name: String,
-            },
-            province: {
-                code: String,
-                name: String,
-            }
+            district: String,
+            province: String,
         },
         salary: {type: String},
         slug: {type: String},

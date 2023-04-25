@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const accountController = require('../controller/AccountController')
+const recruitmentControler = require('../controller/RecruitmentController')
 const validatorRegister = require('../middlewares/validatorRegister')
 const validatorLogin = require('../middlewares/validatorLogin')
 const jwtGuard = require('../middlewares/jwtTokenGuard')
+const upload = require('../middlewares/multerRecruitment')
 
 
 router.get('/', jwtGuard.jwtTokenValidator, (req, res) => {
@@ -29,5 +31,7 @@ router.post('/login', validatorLogin, accountController.loginAccountRecruiter)
 router.get('/add-recruitment', (req, res) => {
     res.render('recruiter/add-recruitment', {layout: 'recruiter'})
 })
+
+router.post('/add-recruitment', upload.single('image'), recruitmentControler.addRecruitment)
 
 module.exports = router;

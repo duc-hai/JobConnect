@@ -1,9 +1,9 @@
 <div class="container">
     <h4 class="mt-4 text-center">Thêm mới tin tuyển dụng</h4>
-    <form action="/recruiter/add" method="post" enctype="multipart/form-data">
+    <form action="/recruiter/add-recruitment" id="add-recruitment" method="post" enctype="multipart/form-data">
         <div class="form-group mt-3">
             <label for="title" class="label-control">Tiêu đề</label>
-            <input type="text" class="form-control" name="title" id="title">
+            <input type="text" class="form-control" name="title" id="title" placeholder="Nhập tiêu đề tin tuyển dụng">
         </div>
 
         <div class="form-group mt-3">
@@ -31,7 +31,9 @@
         <div class="form-group mt-3">
             <label for="" class="label-control">Địa chỉ</label>
 
-            <select name="province" id="province" class="form-control">
+            <input type="text" class="form-control" name="street" id="street" placeholder="Nhập tên đường, phường làm việc">
+
+            <select name="province" id="province" class="form-control mt-2">
                 <option value="">---Tỉnh thành---</option>
             </select>
 
@@ -140,7 +142,7 @@
 
         <div class="form-group mt-3">
             <label for="experience" class="label-control">Kinh nghiệm</label>
-            <input type="text" class="form-control" name="experience" id="experience">
+            <input type="text" class="form-control" name="experience" id="experience" placeholder="Nhập kinh nghiệm yêu cầu ở ứng viên">
         </div>
 
         <div class="form-group mt-3">
@@ -166,3 +168,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="/js/recruiter/add-recruitment.js"></script>
+<style>
+    label {
+        font-weight: 600;
+        {{!-- font-style: italic; --}}
+    }
+</style>
