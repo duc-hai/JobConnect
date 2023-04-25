@@ -43,7 +43,7 @@ npm start
 
 ### Accounts
 - Applicant: luuduchai@gmail.com / 123456
-- Recruiter: admin / 123456
+- Recruiter: recruiter@gmail.com / 123456
 
 ### Authors
 - Lưu Đức Hải

@@ -9,6 +9,14 @@ const recruitment = new Schema (
         createdAt: {type: Date},
         address: {
             street: String,
+            district: {
+                code: String,
+                name: String,
+            },
+            province: {
+                code: String,
+                name: String,
+            }
         },
         salary: {type: String},
         slug: {type: String},
@@ -19,7 +27,7 @@ const recruitment = new Schema (
         requirement: {type: String},
         benefit: {type: String},
         deadlineSubmis: {type: Date},
-        profession: {type: String}
+        profession: {type: Number}
     },
 )
 

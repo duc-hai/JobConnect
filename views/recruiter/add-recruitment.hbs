@@ -1,0 +1,168 @@
+<div class="container">
+    <h4 class="mt-4 text-center">Thêm mới tin tuyển dụng</h4>
+    <form action="/recruiter/add" method="post" enctype="multipart/form-data">
+        <div class="form-group mt-3">
+            <label for="title" class="label-control">Tiêu đề</label>
+            <input type="text" class="form-control" name="title" id="title">
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="image" class="label-control">Hình ảnh</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="" class="label-control">Mức lương</label>
+            <select name="salary" id="salary" class="form-control">
+                <option value="Dưới 3 triệu">Dưới 3 triệu</option>
+                <option value="3 - 5 triệu">3 - 5 triệu</option>
+                <option value="5 - 7 triệu">5 - 7 triệu</option>
+                <option value="7 - 10 triệu">7 - 10 triệu</option>
+                <option value="10 - 15 triệu">10 - 15 triệu</option>
+                <option value="15 - 20 triệu">15 - 20 triệu</option>
+                <option value="20 - 30 triệu">20 - 30 triệu</option>
+                <option value="30 - 50 triệu">30 - 50 triệu</option>
+                <option value="Trên 50 triệu">Trên 50 triệu</option>
+                <option value="Thỏa thuận">Thỏa thuận</option>
+            </select>
+        </div>
+
+
+        <div class="form-group mt-3">
+            <label for="" class="label-control">Địa chỉ</label>
+
+            <select name="province" id="province" class="form-control">
+                <option value="">---Tỉnh thành---</option>
+            </select>
+
+            <select name="district" id="district" class="form-control mt-2">
+                <option value="">---Quận huyện---</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="workingWay" class="label-control">Hình thức làm việc</label>
+            <select class="form-control" name="workingWay" id="workingWay">
+                <option value="Partime">Partime</option>
+                <option value="Fulltime">Fulltime</option>
+                <option value="Thực tập">Thực tập</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="position" class="label-control">Vị trí công việc</label>
+            <select name="position" id="position" class="form-control">
+                <option value="Nhân viên">Nhân viên</option>
+                <option value="Trưởng nhóm">Trưởng nhóm</option>
+                <option value="Trưởng / Phó phòng">Trưởng / Phó phòng</option>
+                <option value="Quản lý / giám sát">Quản lý / giám sát</option>
+                <option value="Trưởng chi nhánh">Trưởng chi nhánh</option>
+                <option value="Phó giám đốc">Phó giám đốc</option>
+                <option value="Giám đốc">Giám đốc</option>
+                <option value="Thực tập sinh">Thực tập sinh</option>
+            </select>
+            {{!-- <input type="text" class="form-control" name="position" id="position"> --}}
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="profession" class="form-label">Ngành nghề</label>
+            <select name="profession" id="profession" class="form-control">
+                <option value="">Chọn ngành nghề</option>
+                <option value="1">Kinh doanh / Bán hàng</option>
+                <option value="3">Biên / Phiên dịch</option>
+                <option value="4">Báo chí / Truyền hình</option>
+                <option value="5">Bưu chính - Viễn thông</option>
+                <option value="6">Bảo hiểm</option>
+                <option value="7">Bất động sản</option>
+                <option value="8">Chứng khoán / Vàng / Ngoại tệ</option>
+                <option value="9">Công nghệ cao</option>
+                <option value="10">Cơ khí / Chế tạo / Tự động hóa</option>
+                <option value="11">Du lịch</option>
+                <option value="12">Dầu khí/Hóa chất</option>
+                <option value="13">Dệt may / Da giày</option>
+                <option value="14">Dịch vụ khách hàng</option>
+                <option value="15">Điện tử viễn thông</option>
+                <option value="16">Điện / Điện tử / Điện lạnh</option>
+                <option value="17">Giáo dục / Đào tạo</option>
+                <option value="18">Hoá học / Sinh học</option>
+                <option value="19">Hoạch định/Dự án</option>
+                <option value="20">Hàng gia dụng</option>
+                <option value="21">Hàng hải</option>
+                <option value="22">Hàng không</option>
+                <option value="23">Hành chính / Văn phòng</option>
+                <option value="24">In ấn / Xuất bản</option>
+                <option value="25">IT Phần cứng / Mạng</option>
+                <option value="26">IT phần mềm</option>
+                <option value="27">Khách sạn / Nhà hàng</option>
+                <option value="28">Kế toán / Kiểm toán</option>
+                <option value="29">Marketing / Truyền thông / Quảng cáo</option>
+                <option value="30">Môi trường / Xử lý chất thải</option>
+                <option value="31">Mỹ phẩm / Trang sức</option>
+                <option value="32">Mỹ thuật / Nghệ thuật / Điện ảnh</option>
+                <option value="33">Ngân hàng / Tài chính</option>
+                <option value="34">Nhân sự</option>
+                <option value="35">Nông / Lâm / Ngư nghiệp</option>
+                <option value="36">Luật/Pháp lý</option>
+                <option value="37">Quản lý chất lượng (QA/QC)</option>
+                <option value="38">Quản lý điều hành</option>
+                <option value="39">Thiết kế đồ họa</option>
+                <option value="42">Thời trang</option>
+                <option value="43">Thực phẩm / Đồ uống</option>
+                <option value="45">Tư vấn</option>
+                <option value="46">Tổ chức sự kiện / Quà tặng</option>
+                <option value="47">Vận tải / Kho vận</option>
+                <option value="48">Logistics</option>
+                <option value="49">Xuất nhập khẩu</option>
+                <option value="50">Xây dựng</option>
+                <option value="51">Y tế / Dược</option>
+                <option value="52">Công nghệ Ô tô</option>
+                <option value="53">An toàn lao động</option>
+                <option value="54">Bán hàng kỹ thuật</option>
+                <option value="55">Bán lẻ / bán sỉ</option>
+                <option value="56">Bảo trì / Sửa chữa</option>
+                <option value="57">Dược phẩm / Công nghệ sinh học</option>
+                <option value="58">Địa chất / Khoáng sản</option>
+                <option value="59">Hàng cao cấp</option>
+                <option value="60">Hàng tiêu dùng</option>
+                <option value="61">Kiến trúc</option>
+                <option value="62">Phi chính phủ / Phi lợi nhuận</option>
+                <option value="63">Sản phẩm công nghiệp</option>
+                <option value="64">Sản xuất</option>
+                <option value="65">Tài chính / Đầu tư</option>
+                <option value="66">Thiết kế nội thất</option>
+                <option value="67">Thư ký / Trợ lý</option>
+                <option value="68">Spa / Làm đẹp</option>
+                <option value="69">Công nghệ thông tin</option>
+                <option value="70">NGO / Phi chính phủ / Phi lợi nhuận</option>
+                <option value="0">Ngành nghề khác</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="experience" class="label-control">Kinh nghiệm</label>
+            <input type="text" class="form-control" name="experience" id="experience">
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="description" class="label-control">Mô tả</label>
+            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="requirement" class="label-control">Yêu cầu</label>
+            <textarea class="form-control" name="requirement" id="requirement" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="benefit" class="label-control">Quyền lợi</label>
+            <textarea class="form-control" name="benefit" id="benefit" cols="30" rows="10"></textarea>
+        </div>
+
+        <button class="btn btn-success mt-3" type="submit">
+            Thêm mới
+        </button>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/js/recruiter/add-recruitment.js"></script>

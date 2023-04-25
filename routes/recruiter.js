@@ -26,4 +26,8 @@ router.post('/register', validatorRegister, accountController.registerAccountRec
 
 router.post('/login', validatorLogin, accountController.loginAccountRecruiter)
 
+router.get('/add-recruitment', (req, res) => {
+    res.render('recruiter/add-recruitment', {layout: 'recruiter'})
+})
+
 module.exports = router;
