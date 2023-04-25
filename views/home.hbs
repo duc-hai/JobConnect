@@ -1,0 +1,425 @@
+<div class="banner-box row">
+    <div class="search-box col-lg-6 col-md-12 col-xs-12">
+        <form action="/recruitment/search" class="form-search">
+            <div class="search-main">
+                <input class="input-search" type="text" placeholder="Nhập từ khóa để tìm kiếm" id="key-search"
+                    onfocus="showFilter()" name="q">
+                <input class="input-submit" type="submit" value="Tìm việc ngay">
+            </div>
+
+            <div class="filter" id="filter">
+                <div class="filter-heading">
+                    <span class="weight-600">Tìm kiếm nâng cao</span>
+                    <span class="collap" onclick="collap()">Thu gọn</span>
+                </div>
+
+                <div class="search-filter">
+                    <div class="filter-row">
+                        <select name="profession" id="profession" class="filter-col">
+                            <option value="">Ngành nghề</option>
+                            <option value="1">Kinh doanh / Bán hàng</option>
+                            <option value="3">Biên / Phiên dịch</option>
+                            <option value="4">Báo chí / Truyền hình</option>
+                            <option value="5">Bưu chính - Viễn thông</option>
+                            <option value="6">Bảo hiểm</option>
+                            <option value="7">Bất động sản</option>
+                            <option value="8">Chứng khoán / Vàng / Ngoại tệ</option>
+                            <option value="9">Công nghệ cao</option>
+                            <option value="10">Cơ khí / Chế tạo / Tự động hóa</option>
+                            <option value="11">Du lịch</option>
+                            <option value="12">Dầu khí/Hóa chất</option>
+                            <option value="13">Dệt may / Da giày</option>
+                            <option value="14">Dịch vụ khách hàng</option>
+                            <option value="15">Điện tử viễn thông</option>
+                            <option value="16">Điện / Điện tử / Điện lạnh</option>
+                            <option value="17">Giáo dục / Đào tạo</option>
+                            <option value="18">Hoá học / Sinh học</option>
+                            <option value="19">Hoạch định/Dự án</option>
+                            <option value="20">Hàng gia dụng</option>
+                            <option value="21">Hàng hải</option>
+                            <option value="22">Hàng không</option>
+                            <option value="23">Hành chính / Văn phòng</option>
+                            <option value="24">In ấn / Xuất bản</option>
+                            <option value="25">IT Phần cứng / Mạng</option>
+                            <option value="26">IT phần mềm</option>
+                            <option value="27">Khách sạn / Nhà hàng</option>
+                            <option value="28">Kế toán / Kiểm toán</option>
+                            <option value="29">Marketing / Truyền thông / Quảng cáo</option>
+                            <option value="30">Môi trường / Xử lý chất thải</option>
+                            <option value="31">Mỹ phẩm / Trang sức</option>
+                            <option value="32">Mỹ thuật / Nghệ thuật / Điện ảnh</option>
+                            <option value="33">Ngân hàng / Tài chính</option>
+                            <option value="34">Nhân sự</option>
+                            <option value="35">Nông / Lâm / Ngư nghiệp</option>
+                            <option value="36">Luật/Pháp lý</option>
+                            <option value="37">Quản lý chất lượng (QA/QC)</option>
+                            <option value="38">Quản lý điều hành</option>
+                            <option value="39">Thiết kế đồ họa</option>
+                            <option value="42">Thời trang</option>
+                            <option value="43">Thực phẩm / Đồ uống</option>
+                            <option value="45">Tư vấn</option>
+                            <option value="46">Tổ chức sự kiện / Quà tặng</option>
+                            <option value="47">Vận tải / Kho vận</option>
+                            <option value="48">Logistics</option>
+                            <option value="49">Xuất nhập khẩu</option>
+                            <option value="50">Xây dựng</option>
+                            <option value="51">Y tế / Dược</option>
+                            <option value="52">Công nghệ Ô tô</option>
+                            <option value="53">An toàn lao động</option>
+                            <option value="54">Bán hàng kỹ thuật</option>
+                            <option value="55">Bán lẻ / bán sỉ</option>
+                            <option value="56">Bảo trì / Sửa chữa</option>
+                            <option value="57">Dược phẩm / Công nghệ sinh học</option>
+                            <option value="58">Địa chất / Khoáng sản</option>
+                            <option value="59">Hàng cao cấp</option>
+                            <option value="60">Hàng tiêu dùng</option>
+                            <option value="61">Kiến trúc</option>
+                            <option value="62">Phi chính phủ / Phi lợi nhuận</option>
+                            <option value="63">Sản phẩm công nghiệp</option>
+                            <option value="64">Sản xuất</option>
+                            <option value="65">Tài chính / Đầu tư</option>
+                            <option value="66">Thiết kế nội thất</option>
+                            <option value="67">Thư ký / Trợ lý</option>
+                            <option value="68">Spa / Làm đẹp</option>
+                            <option value="69">Công nghệ thông tin</option>
+                            <option value="70">NGO / Phi chính phủ / Phi lợi nhuận</option>
+                            <option value="0">Ngành nghề khác</option>
+                        </select>
+
+                        <select name="salary" id="salary" class="filter-col">
+                            <option value="">Mức lương</option>
+                            <option value="Dưới 3 triệu">Dưới 3 triệu</option>
+                            <option value="3 - 5 triệu">3 - 5 triệu</option>
+                            <option value="5 - 7 triệu">5 - 7 triệu</option>
+                            <option value="7 - 10 triệu">7 - 10 triệu</option>
+                            <option value="10 - 15 triệu">10 - 15 triệu</option>
+                            <option value="15 - 20 triệu">15 - 20 triệu</option>
+                            <option value="20 - 30 triệu">20 - 30 triệu</option>
+                            <option value="30 - 50 triệu">30 - 50 triệu</option>
+                            <option value="Trên 50 triệu">Trên 50 triệu</option>
+                            <option value="Thỏa thuận">Thỏa thuận</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-row">
+                        <select name="workingWay" id="workingWay" class="filter-col">
+                            <option value="">Hình thức làm việc</option>
+                            <option value="Bán thời gian">Bán thời gian</option>
+                            <option value="Toàn thời gian">Toàn thời gian</option>
+                            <option value="Thực tập">Thực tập</option>
+                        </select>
+
+                        <select name="position" id="position" class="filter-col">
+                            <option value="">Cấp bậc</option>
+                            <option value="Nhân viên">Nhân viên</option>
+                            <option value="Trưởng nhóm">Trưởng nhóm</option>
+                            <option value="Trường / phó phòng">Trường / phó phòng</option>
+                            <option value="Quản lý / giám sát">Quản lý / giám sát</option>
+                            <option value="Trưởng chi nhánh">Trưởng chi nhánh</option>
+                            <option value="Phó giám đốc">Phó giám đốc</option>
+                            <option value="Giám đốc">Giám đốc</option>
+                            <option value="Thực tập sinh">Thực tập sinh</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-row">
+                        <select name="province" id="location-province" class="filter-col">
+                            <option value="">Địa điểm (Tỉnh thành)</option>
+                        </select>
+
+                        <select name="district" id="location-district" class="filter-col">
+                            <option value="">Địa điểm (Quận huyện)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="slider-images col-lg-6">
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="recruit mt-5">
+        <h3 class="weight-600">Tuyển dụng, việc làm hấp dẫn</h3>
+        <div class="employee-location mt-4">
+            <div class="location-item">
+                <div class="location-text location-active">TP. Hồ Chí Minh</div>
+                <div class="location-text">Hà Nội</div>
+                <div class="location-text">Đà Nẵng</div>
+            </div>
+        </div>
+
+        <div class="recruit-list mt-3">
+            <div class="row">
+                {{#each recruitments}}
+                <div class="col-lg-4 col-md-6 col-12 col-item">
+                    <div class="recruit-item">
+                        <div class="recruit-main-infor">
+                            <div style="background-image: url('/images/recruitments/{{image}}'); cursor: pointer;" class="recruit-img" onclick="location.href='/recruitment/detail/{{slug}}-{{_id}}'">
+                            </div>
+                            <div class="recruit-heading">
+                                <a href="/recruitment/detail/{{slug}}-{{_id}}" style="color: #333">
+                                    <span class="job-name weight-600">{{title}}</span>
+                                </a>
+                                <span class="company-name">{{companyName}}</span>
+                            </div>
+                        </div>
+
+                        <div class="recruit-sub-infor">
+                            <div class="recruit-sub">
+                                <div class="recruit-salary">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>{{address.district.name}} , {{address.province.name}}</span>
+                                </div>
+
+                                <div class="recuite-locatation">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                    <span>{{salary}}</span>
+                                </div>
+                            </div>
+                            <i data-reID="{{_id}}" class="fa-regular fa-heart recruit-fav fav-recruitment"></i>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+
+            </div>
+        </div>
+
+        {{!-- Helper pagination --}}
+        {{{pagination paginationRe.currentPage paginationRe.pageCount}}}
+    </div>
+
+    <div class="hot-company mt-5">
+        <h3 class="weight-600">Top Công ty hàng đầu</h3>
+        <div class="company-list mt-3">
+            <div class="row">
+                {{#each companies}}
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="hot-company-item">
+                        <div class="company-main">
+                            <div class="company-img" style="background-image: url(/images/companies/{{avatarImg}})">
+                            </div>
+                            <span class="company-name">{{name}}</span>
+                        </div>
+                        <div class="company-sub">
+                            <span class="num-recruit">30 vị trí đang ứng tuyển</span>
+                            <a href="">
+                                <i class="fa-solid fa-arrow-up-right-from-square link-company"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="hot-career mt-5">
+        <h3 class="weight-600">Top ngành nghề hot <span id="current-year">hiện tại</span></h3>
+        <div class="career-list mt-3">
+            <div class="row">
+                <!-- Item -->
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="career-item">
+                        <div class="career-main">
+                            <span class="career-heading weight-600">Công nghệ thông tin</span>
+                        </div>
+                        <div class="career-sub">
+                            <span class="num-recruit-career">740.000 việc làm tuyển dụng</span>
+                            <a href="" class="career-sub-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="blog">
+        <!-- Coming soon -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="advertisement mt-3">
+        <img src="https://thumbs.dreamstime.com/z/join-our-team-recruitment-design-poster-hiring-banner-template-modern-brush-lettering-colorful-background-trendy-187792100.jpg"
+            alt="Ảnh quảng cáo" class="advertisement-img">
+    </div>
+</div>
+
+<div class="container mobile-reset-container">
+    <div class="about-us mt-5">
+        <h3 class="weight-600 text-center">Về chúng tôi</h3>
+        <div class="wrap-content mt-3">
+            <span class="about-us-text">
+                Với sứ mệnh kết nối giữa doanh nghiệp và các ứng viên tiềm năng, với mong muốn tạo cầu nối phát triển sự
+                nghiệp cho cả công ty và nhân viên, chúng tôi luôn mong muốn cải thiện thị trường tuyển dụng - nhân sự
+                một cách hiệu quả hơn. Với việc tìm hiểu quy trình nghiệp vụ cũng như vận dụng công nghệ, chúng tôi tạo
+                ra một nền tảng cho phép người lao động thỏa sức tìm kiếm công việc mong muốn, phát triển sự nghiệp của
+                bản thân. Đối với các doanh nghiệp, công ty sẽ tìm được những ứng viên tiềm năng cho riêng mình.
+            </span>
+
+            <div class="achieve">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6 achieve-item">
+                        <span class="achieve-heading">30.000+</span>
+                        <span class="achieve-content">Ứng viên đang tìm việc</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="/js/index.js"></script>

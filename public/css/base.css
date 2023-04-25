@@ -1,0 +1,36 @@
+:root {
+    /* Use analogous color*/
+    --main-color: #7bd6f0;
+    --secondary-color: #f7fdff;
+    --text-color: #333; 
+    --header-height: 76px;
+    --solid-color:#bbffff;
+}
+
+.separate-right {
+    border-right: 1px solid #DDDDDD;
+}
+
+.separate-bottom {
+    border-bottom: 1px solid #DDD;
+}
+
+.weight-600 {
+    font-weight: 600;
+}
+
+.location-active {
+    /* background-color: #198754 !important; */
+    background-color: var(--main-color) !important;
+    /* color: rgb(255, 255, 255, 0.9); */
+    color: #333;
+    font-weight: 600;
+}
+
+/* Add class for bootstrap */
+@media only screen and (min-width: 740px) and (max-width: 1023px){
+    .col-sm-0 {
+        flex: 0 0 0 !important;
+        max-width: 0 !important;
+    }
+}
