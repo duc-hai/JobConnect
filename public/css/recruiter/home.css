@@ -55,7 +55,7 @@ h5 {
 .nav-bar {
     width: 200px;
     background-color: #d9d9d9;
-    /* height: calc(100vh - 70px); */
+    min-height: calc(100vh - 70px);
 }
 
 .nav-bar li {

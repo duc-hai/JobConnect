@@ -53,7 +53,10 @@ document.getElementById('add-recruitment').addEventListener('submit', function (
     e.preventDefault()
     let formData = new FormData()
     formData.append('title', document.getElementById('title').value)
-    formData.append('image', document.getElementById('image').files[0])
+    const file = document.getElementById('image')
+    if (file.files.length > 0) {
+        formData.append('image', file.files[0])
+    }
     formData.append('salary', document.getElementById('salary').value)
     
     let address = {
@@ -69,6 +72,7 @@ document.getElementById('add-recruitment').addEventListener('submit', function (
     formData.append('description', document.getElementById('description').value)
     formData.append('requirement', document.getElementById('requirement').value)
     formData.append('benefit', document.getElementById('benefit').value)
+    formData.append('deadlineSubmis', document.getElementById('deadlineSubmis').value)
 
     fetch('/recruiter/add-recruitment', {
         method: 'POST',
@@ -77,6 +81,9 @@ document.getElementById('add-recruitment').addEventListener('submit', function (
         .then(rel => rel.json())
         .then(data => {
             console.log(data)
+            if (data.status === 'OK') {
+                location.href = '/recruiter/manage-recruitments'
+            }
         })
         .catch(err => {
             console.log(err)

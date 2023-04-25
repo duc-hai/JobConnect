@@ -7,7 +7,6 @@ const validatorLogin = require('../middlewares/validatorLogin')
 const jwtGuard = require('../middlewares/jwtTokenGuard')
 const upload = require('../middlewares/multerRecruitment')
 
-
 router.get('/', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/home', {layout: 'recruiter'})
 })
@@ -32,6 +31,10 @@ router.get('/add-recruitment', (req, res) => {
     res.render('recruiter/add-recruitment', {layout: 'recruiter'})
 })
 
-router.post('/add-recruitment', upload.single('image'), recruitmentControler.addRecruitment)
+router.post('/add-recruitment', jwtGuard.jwtTokenValidator, upload.single('image'), recruitmentControler.addRecruitment)
+
+router.get('/create-profile', (req, res) => {
+    res.render('recruiter/create-profile', {layout: 'recruiter'})
+})
 
 module.exports = router;

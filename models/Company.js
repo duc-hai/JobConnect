@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
-
+const mongooseDelete = require('mongoose-delete')
 
 const Schema = mongoose.Schema
 
-const comapny = new Schema (
+const company = new Schema (
     {
         name: {type: String},
         address: {type: String},
@@ -17,4 +17,9 @@ const comapny = new Schema (
     },
 )
 
-module.exports = mongoose.model('Company', comapny);
+company.plugin(mongooseDelete, {
+    deletedAt: true,
+    overrideMethods: 'all',
+});
+
+module.exports = mongoose.model('Company', company);

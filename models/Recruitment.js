@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const mongooseDelete = require('mongoose-delete')
+const slug = require('mongoose-slug-generator')
 
 const Schema = mongoose.Schema
  
@@ -13,7 +15,7 @@ const recruitment = new Schema (
             province: String,
         },
         salary: {type: String},
-        slug: {type: String},
+        slug: {type: String, slug: "title"},
         experience: {type: String},
         workingWay: {type: String},
         description: {type: String},
@@ -21,8 +23,15 @@ const recruitment = new Schema (
         requirement: {type: String},
         benefit: {type: String},
         deadlineSubmis: {type: Date},
-        profession: {type: Number}
+        profession: {type: Number},
+        idCompany: {type: String}
     },
 )
+
+mongoose.plugin(slug)
+recruitment.plugin(mongooseDelete, {
+    deletedAt: true,
+    overrideMethods: 'all',
+});
 
 module.exports = mongoose.model('Recruitment', recruitment);

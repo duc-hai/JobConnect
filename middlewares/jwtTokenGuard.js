@@ -1,6 +1,7 @@
 const { verify } = require('jsonwebtoken')
 const Account = require('../models/Account')
 const User = require('../models/User')
+const Company = require('../models/Company')
 
 exports.jwtTokenValidator = async (req, res, next) => {
     try {
@@ -36,9 +37,12 @@ exports.jwtTokenValidator = async (req, res, next) => {
 
         const user = await User.findById(verified.userId)
         const account = await Account.findOne({ email: verified.email })
+        const company = await Company.findOne({ idUser : user.id})
         //console.log(user);
-        req.user = user;
+        req.user = user
         req.account = account
+        req.company = company
+        
         return next();
     }   
     catch (err) {
