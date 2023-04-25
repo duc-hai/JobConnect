@@ -35,10 +35,10 @@ exports.jwtTokenValidator = async (req, res, next) => {
         }
 
         const user = await User.findById(verified.userId)
-        const email = await Account.findOne({ email: verified.email })
+        const account = await Account.findOne({ email: verified.email })
         //console.log(user);
         req.user = user;
-        req.email = email
+        req.account = account
         return next();
     }   
     catch (err) {

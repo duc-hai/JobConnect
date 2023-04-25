@@ -7,7 +7,7 @@ const jwtGuard = require('../middlewares/jwtTokenGuard')
 
 
 router.get('/', jwtGuard.jwtTokenValidator, (req, res) => {
-    res.render('recruiter/home', {layout: false})
+    res.render('recruiter/home', {layout: 'recruiter'})
 })
 
 router.get('/login', (req, res) => {
@@ -16,6 +16,10 @@ router.get('/login', (req, res) => {
 
 router.get('/register', (req, res) => {
     res.render('recruiter/register', {layout: false})
+})
+
+router.get('/manage-recruitments', (req, res) => {
+    res.render('recruiter/manage-recruitments', {layout: 'recruiter'})
 })
 
 router.post('/register', validatorRegister, accountController.registerAccountRecruiter)

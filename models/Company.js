@@ -13,6 +13,7 @@ const comapny = new Schema (
         logo: {type: String},
         coverImg: {type: String},
         slug: {type: String},
+        idUser: {type: String}
     },
 )
 

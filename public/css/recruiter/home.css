@@ -1,0 +1,86 @@
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+h5 {
+    margin: 0;
+}
+/* End */
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.wrapper {
+    margin-top: 70px;
+    display: flex;
+}
+
+.bar-icon {
+    cursor: pointer;
+    color: #fff;
+    padding: 20px;  
+    font-size: 18px;
+}
+
+.nav-bar {
+    width: 200px;
+    background-color: #d9d9d9;
+    height: calc(100vh - 70px);
+}
+
+.nav-bar li {
+    padding: 12px;
+}
+
+.nav-bar li a:hover {
+    color: black;
+    opacity: 0.7;
+}
+
+.icon-delete {
+    color: var(--bs-danger)
+}
+
+.icon-infor {
+    color: var(--bs-secondary)
+}
+
+.icon-edit {
+    color: var(--bs-primary)
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0px 4px;
+}

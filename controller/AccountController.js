@@ -95,4 +95,4 @@ class AccountController {
     }
 
 }
-module.exports = new AccountController();
+module.exports = new AccountController()

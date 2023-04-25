@@ -2,23 +2,25 @@ const mongoose = require('mongoose')
 const mongooseDelete = require('mongoose-delete')
 
 const Schema = mongoose.Schema
- 
-const user = new Schema (
+
+const user = new Schema(
     {
-        fullName: {type: String},
-        phoneNumber: {type: String},
-        avatar: {type: String},
-        role: {type: Number},
+        fullName: { type: String },
+        phoneNumber: { type: String },
+        avatar: { type: String },
+        role: { type: Number },
 
-        position: {type: String},
+        position: { type: String },
 
-        CV: {type: String},
-        education: {type: String},
-        introduction: {type: String},
-        skills: {type: Array},
-        speciality: {type: Array},
-        achivements: {type: Array},
-        professions: {type: Array}
+        applicant: {
+            CV: { type: String },
+            education: { type: String },
+            introduction: { type: String },
+            skills: { type: Array },
+            speciality: { type: Array },
+            achivements: { type: Array },
+            professions: { type: Array }
+        }
     },
 )
 
