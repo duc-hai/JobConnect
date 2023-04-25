@@ -4,14 +4,19 @@ const User = require('../models/User')
 
 exports.jwtTokenValidator = async (req, res, next) => {
     try {
-        //console.log(req.headers);
-        if (!req.headers.authorization) {
+        if (!req.headers.authorization && !req.headers.cookie) {
             return res.status(401).json({
                 status: 'error',
                 message: "Unauthorized, check your login"
             });
         }
-        const accessTokenFromHeader = req.headers.authorization.split(" ")[1];
+        let accessTokenFromHeader
+        if (req.headers.authorization) {
+            accessTokenFromHeader = req.headers.authorization.split(" ")[1]
+        }
+        else if (req.headers.cookie) {
+            accessTokenFromHeader = req.headers.cookie.split("=")[1]
+        }
         //console.log(accessTokenFromHeader)
         if (!accessTokenFromHeader) {
             return res.status(401).json({

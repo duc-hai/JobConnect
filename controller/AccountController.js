@@ -87,7 +87,6 @@ class AccountController {
         let accessToken = jwt.sign({ userId: account.idUser, email: account.email }, process.env.ACCESS_TOKEN, { algorithm: 'HS256', expiresIn: '10h' })
         let refreshToken = jwt.sign({ userId: account.idUser, email: account.email }, process.env.REFRESH_TOKEN)
         res.cookie('accessToken', accessToken)
-        
         return res.status(200).json({
             status: 'OK',
             access_token: accessToken,
