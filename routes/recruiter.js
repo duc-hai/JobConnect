@@ -34,7 +34,11 @@ router.get('/add-recruitment', (req, res) => {
     res.render('recruiter/add-recruitment', {layout: 'recruiter'})
 })
 
+router.get('/getAllRecruitments', jwtGuard.jwtTokenValidator, recruitmentControler.getAllRecruitmentByCompany)
+
 router.post('/add-recruitment', jwtGuard.jwtTokenValidator, upload.single('image'), recruitmentControler.addRecruitment)
+
+router.delete('/deleteRecruitment/:id', jwtGuard.jwtTokenValidator, recruitmentControler.deleteRecruitmentByCompany)
 
 router.get('/create-profile', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/create-profile', {layout: 'recruiter'})

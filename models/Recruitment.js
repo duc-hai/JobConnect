@@ -26,6 +26,9 @@ const recruitment = new Schema (
         profession: {type: Number},
         idCompany: {type: String}
     },
+    {
+        timestamps: true,
+    },
 )
 
 mongoose.plugin(slug)
