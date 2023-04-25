@@ -19,30 +19,37 @@
     <script src="https://kit.fontawesome.com/7cff00f1d7.js" crossorigin="anonymous"></script>
     <!--  -->
 
-    <link rel="stylesheet" href="/css/reset.css">    
+    <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/recruiter/login.css">
+
+
 </head>
 
 <body>
     <div id="main">
-        <form action="" method="post" id="form-login">
+        <form action="" method="post" id="form-register">
             <h2 class="text-center">Đăng ký nhà tuyển dụng mới</h2>
 
             <div class="form-group mt-3">
+                <label for="name" class="label-control">Họ tên</label>
+                <input type="name" name="name" id="name" class="form-control" placeholder="Nhập tên của bạn" required>
+            </div>
+
+            <div class="form-group mt-3">
                 <label for="email" class="label-control">Email</label>
-                <input type="email" name="email" id="id" class="form-control" placeholder="Nhập email của bạn">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Nhập email của bạn" required>
             </div>
 
             <div class="form-group mt-3">
                 <label for="password" class="label-control">Mật khẩu</label>
                 <input type="password" name="password" id="password" class="form-control"
-                    placeholder="Nhập mật khẩu của bạn">
+                    placeholder="Nhập mật khẩu của bạn" required>
             </div>
 
             <div class="form-group mt-3">
                 <label for="confirmPassword" class="label-control">Nhập lại mật khẩu</label>
                 <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-                    placeholder="Nhập mật khẩu của bạn">
+                    placeholder="Nhập mật khẩu của bạn" required>
             </div>
 
             <div class="form-group mt-3">
@@ -53,5 +60,7 @@
         </form>
     </div>
 </body>
+
+<script src="/js/recruiter/register.js"></script>
 
 </html>
