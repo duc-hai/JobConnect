@@ -2,10 +2,13 @@ const express = require('express')
 const router = express.Router()
 const accountController = require('../controller/AccountController')
 const recruitmentControler = require('../controller/RecruitmentController')
+const companyController = require('../controller/CompanyController')
 const validatorRegister = require('../middlewares/validatorRegister')
 const validatorLogin = require('../middlewares/validatorLogin')
 const jwtGuard = require('../middlewares/jwtTokenGuard')
 const upload = require('../middlewares/multerRecruitment')
+const uploadCompany = require('../middlewares/multerCompany')
+
 
 router.get('/', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/home', {layout: 'recruiter'})
@@ -33,8 +36,10 @@ router.get('/add-recruitment', (req, res) => {
 
 router.post('/add-recruitment', jwtGuard.jwtTokenValidator, upload.single('image'), recruitmentControler.addRecruitment)
 
-router.get('/create-profile', (req, res) => {
+router.get('/create-profile', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/create-profile', {layout: 'recruiter'})
 })
+
+router.post('/create-profile-company', jwtGuard.jwtTokenValidator, uploadCompany.array('logo'), companyController.createProfile)
 
 module.exports = router;
