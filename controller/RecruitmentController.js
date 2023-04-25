@@ -93,6 +93,83 @@ class RecruitmentController {
             })
         }
     }
+
+    async detailRecruitmentByCompany (req, res, next) {
+        try {
+            if (!req.params.id) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'ID recruitment not found, please check again'
+                })
+            }
+
+            const companyId = req.company.id
+            const recruitment = await Recruitment.findOne({_id: req.params.id, idCompany: companyId})
+
+            if (!recruitment) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: `Can not find recruitment suitable for id ${req.params.id}`,
+                })
+            }   
+
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Get detail recruitment successfully',
+                recruitment
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
+
+    async updateRecruitmentByCompany (req, res, next) {
+        try {
+            //console.log(req.body)
+            if (!req.params.id) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'ID recruitment not found, please check again'
+                })
+            }
+
+            if (req.file) {
+                //console.log(req.file)
+                req.body.image = req.file.filename
+            }
+
+            const companyId = req.company.id
+            const recruitment = await Recruitment.findOne({_id: req.params.id, idCompany: companyId})
+
+            if (!recruitment) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: `Can not find recruitment suitable for id ${req.params.id}`,
+                })
+            }   
+
+            const updateRecruitment = await Recruitment.findOneAndUpdate({_id: req.params.id, idCompany: companyId}, req.body)
+
+            const newRecruitment = await Recruitment.findOne({_id: req.params.id, idCompany: companyId})
+
+            return res.status(200).json({
+                status: 'OK',
+                message: `Update recruitment with id ${req.params.id} successfully`,
+                oldRecruitment: updateRecruitment,
+                newRecruitment
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
 }
 
 module.exports = new RecruitmentController ()
