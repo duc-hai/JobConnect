@@ -652,6 +652,47 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Apply recruitment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "recomdLetter",
+											"value": "Luôn nhiệt tình, năng nổ trong công việc",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruitment/apply/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"apply",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6448c0489f06086c0d513f17"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},

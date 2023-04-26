@@ -336,6 +336,86 @@ class RecruitmentController {
             })
         }
     }
+
+    async applyRecruitment (req, res, next) {
+        try {
+            //ID recruitment
+            const id = req.params.id
+            
+            if (!id) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'ID recruiment is required'
+                })
+            }
+
+            const userId = req.user._id
+            const appliedJob = (await User.findById(userId).lean()).appliedJob
+            if (!appliedJob) {
+                return res.status(400).json({
+                    status: 'error',
+                    messag: 'Can not find applied job in database'
+                })
+            }
+
+            //Check job is exist in applied jobs
+            if (appliedJob.length > 0) {
+                let isExist = false
+                for (let i = 0; i < appliedJob.length; i++) {
+                    if (appliedJob[i].jobId == id) {
+                        isExist = true
+                        break
+                    }
+                }
+
+                if (isExist) {
+                    return res.status(400).json({
+                        status: 'error',
+                        message: 'This recruitment is already applied, please unsubmit and try again'
+                    })
+                }
+            }
+
+            const recomdLetter = req.body.recomdLetter || ''
+
+            const newApplyJob = {
+                jobId: id,
+                recomdLetter
+            }
+
+            appliedJob.push(newApplyJob)
+
+            //console.log(userId)
+            //console.log(appliedJob)
+            
+            const userInfo = await User.findOneAndUpdate(
+                {_id: userId},
+                {appliedJob}
+            )
+            
+            const userListApplied = (await Recruitment.findById(id)).appliedUser
+            
+            //console.log(userListApplied)
+            userListApplied.push(userId)
+
+            const companyInfo = await Recruitment.findByIdAndUpdate(id, {appliedUser: userListApplied})
+
+            //console.log(companyInfo)
+
+            return res.status(200).json({
+                status: 'OK',
+                message: `Apply recruitment with id ${id} successfully`,
+                userInfo,
+                companyInfo
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
 }
 
 module.exports = new RecruitmentController()

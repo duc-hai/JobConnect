@@ -18,7 +18,18 @@ const user = new Schema(
         skills: { type: Array },
         speciality: { type: Array },
         achivements: { type: Array },
-        professions: { type: Array }
+        professions: { type: Array },
+        savedJob: { type: Array },
+        appliedJob: [
+            {
+                jobId: String,
+                recomdLetter: String,
+                response: {
+                    code: Number,
+                    message: String,
+                }
+            }
+        ]
     },
 )
 
