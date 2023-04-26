@@ -31,6 +31,8 @@ const recruitment = new Schema (
     },
 )
 
+recruitment.index({title: 'text'}) //create an index to support text search
+
 mongoose.plugin(slug)
 recruitment.plugin(mongooseDelete, {
     deletedAt: true,

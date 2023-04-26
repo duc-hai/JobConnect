@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const recruiterRouter = require('./recruiter')
 const homeRouter = require('./home')
+const recruitmentRouter = require('./recruitment')
 
 router.get('/', (req, res) => {
     res.render('home')
@@ -11,6 +12,7 @@ router.get('/login', (req, res) => {
 })
 
 router.use('/recruiter', recruiterRouter)
+router.use('/recruitment', recruitmentRouter)
 router.use('/', homeRouter)
 
 router.use('/', (req, res) => {

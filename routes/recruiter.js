@@ -49,7 +49,6 @@ router.get('/create-profile', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/create-profile', {layout: 'recruiter'})
 })
 
-
 router.post('/create-profile-company', jwtGuard.jwtTokenValidator, uploadCompany.array('logo'), companyController.createProfile)
 
 module.exports = router;
