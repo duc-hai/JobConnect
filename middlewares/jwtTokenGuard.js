@@ -37,11 +37,13 @@ exports.jwtTokenValidator = async (req, res, next) => {
 
         const user = await User.findById(verified.userId)
         const account = await Account.findOne({ email: verified.email })
-        const company = await Company.findOne({ idUser : user.id})
+        if (user.role == 2) {
+            const company = await Company.findOne({ idUser : user.id})
+            req.company = company
+        }
         //console.log(user);
         req.user = user
         req.account = account
-        req.company = company
         
         return next();
     }   
