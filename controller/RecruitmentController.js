@@ -1,4 +1,5 @@
 const Recruitment = require('../models/Recruitment')
+const User = require('../models/User')
 
 class RecruitmentController {
     async addRecruitment(req, res, next) {
@@ -277,6 +278,55 @@ class RecruitmentController {
             return res.status(200).json({
                 status: 'OK',
                 recruitment
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
+
+    async saveRecruitment (req, res, next) {
+        try {
+            const id = req.params.id
+            if (!id) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'ID recruiment is required'
+                })
+            }
+
+            let checkExist = await Recruitment.findById(id)
+            if (!checkExist) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: `Can not find recruitment with ID ${id}`
+                })
+            }
+
+            const idUser = req.user._id
+            // console.log(idUser)
+            // let savedRecruitment = await User.findById(idUser).savedRecruitment
+            // //let savedRecruitment = recruitment.savedRecruitment
+            let savedRecruitment = await User.updateOne({_id: idUser}, { $set: { 'savedRecruitment' : [id]} }, {multi:true})
+            //savedRecruitment['savedRecruitment'] = [id]
+            //await savedRecruitment.save()
+            // if (!savedRecruitment) {
+            //     savedRecruitment = []
+            // }
+            
+            // savedRecruitment.push(id)
+            // console.log(savedRecruitment)
+            // //recruitment['savedRecruitment'] = savedRecruitment
+            // //console.log(recruitment)
+            // let result = await User.findByIdAndUpdate(idUser, {savedRecruitment: savedRecruitment})
+            //let result = await User.findByIdAndUpdate(idUser, savedRecruitment)
+            return res.status(500).json({
+                status: 'OK',
+                message: `The recruitment with ID ${id} added bookmark successfully`,
+                //result
             })
         }
         catch (err) {

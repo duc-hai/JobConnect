@@ -24,7 +24,8 @@ const recruitment = new Schema (
         benefit: {type: String},
         deadlineSubmis: {type: Date},
         profession: {type: Number},
-        idCompany: {type: String}
+        idCompany: {type: String},
+        savedRecruitment: {type: Array}
     },
     {
         timestamps: true,
