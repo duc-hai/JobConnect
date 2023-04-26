@@ -1,0 +1,665 @@
+{
+	"info": {
+		"_postman_id": "c9f0ce03-14d3-490c-88a5-1320acff6f3f",
+		"name": "JobConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25971354"
+	},
+	"item": [
+		{
+			"name": "Nhà tuyển dụng",
+			"item": [
+				{
+					"name": "Tài khoản",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Lưu Đức Hải",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "recruiter@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/register",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "recruiter@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/login",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Quản lý thông tin doanh nghiệp",
+					"item": [
+						{
+							"name": "Create profile company",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Access_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "logo",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "address",
+											"value": "Nguyễn Hữu Thọ, Tân Phong, Q7, TP.HCM",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "https://career.com.vn",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Career Company",
+											"type": "text"
+										},
+										{
+											"key": "employees",
+											"value": "3000",
+											"type": "text"
+										},
+										{
+											"key": "introduction",
+											"value": "Công ty thành lập năm 2000, với bề dày hơn 23 năm phát triển\n",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/create-profile-company",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"create-profile-company"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tin tuyển dụng",
+					"item": [
+						{
+							"name": "Add new recruitment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Tuyển dụng lập trình viên NodeJS",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/Luu Duc Hai/Downloads/add-to-cart.png"
+										},
+										{
+											"key": "salary",
+											"value": "3 - 5 triệu",
+											"type": "text"
+										},
+										{
+											"key": "address[street]",
+											"value": "Nguyễn Hữu Thọ, Phường Tân Phong",
+											"type": "text"
+										},
+										{
+											"key": "address[district]",
+											"value": "02",
+											"type": "text"
+										},
+										{
+											"key": "address[province]",
+											"value": "05",
+											"type": "text"
+										},
+										{
+											"key": "workingWay",
+											"value": "Parttime",
+											"type": "text"
+										},
+										{
+											"key": "position",
+											"value": "Nhân viên",
+											"type": "text"
+										},
+										{
+											"key": "profession",
+											"value": "26",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "Dưới 1 năm kinh nghiệm",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Thực tập với NodeJS và các framework của Node",
+											"type": "text"
+										},
+										{
+											"key": "requirement",
+											"value": "Tinh thần trách nhiệm, tâm huyết với công việc",
+											"type": "text"
+										},
+										{
+											"key": "benefit",
+											"value": "Nghỉ vào các ngày cuối tuần, ngày lễ, lương thưởng đầy đủ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/add-recruitment",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"add-recruitment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all recruitment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruiter/getAllRecruitments",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"getAllRecruitments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a recruitment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruiter/deleteRecruitment/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"deleteRecruitment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "644819d21ed003d3082433a2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail recruitment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruiter/detailRecruitment/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"detailRecruitment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "644823e72c1969d983659934"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update recruitment",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Tuyển dụng lập trình viên NodeJS và PHP",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/Luu Duc Hai/Downloads/usecase (6).drawio.png",
+											"disabled": true
+										},
+										{
+											"key": "salary",
+											"value": "3 - 5 triệu",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address[street]",
+											"value": "Nguyễn Hữu Thọ, Phường Tân Phong",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address[district]",
+											"value": "02",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "address[province]",
+											"value": "05",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "workingWay",
+											"value": "Parttime",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "position",
+											"value": "Nhân viên",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "profession",
+											"value": "26",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "Dưới 1 năm kinh nghiệm",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "Thực tập với NodeJS và các framework của Node",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "requirement",
+											"value": "Tinh thần trách nhiệm, tâm huyết với công việc",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "benefit",
+											"value": "Nghỉ vào các ngày cuối tuần, ngày lễ, lương thưởng đầy đủ",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/updateRecruitment/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"updateRecruitment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "644823e72c1969d983659934"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Đơn ứng tuyển",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ứng viên",
+			"item": [
+				{
+					"name": "Tài khoản",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Lưu Đức Hải",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "luuduchai@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/register",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "luuduchai@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/login",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tin tuyển dụng",
+					"item": [
+						{
+							"name": "Get recruitments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/getRecruitments",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"getRecruitments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "perPage",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search recruiments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruitment/search?q=PHP&profession=26&salary=3 - 5 triệu&workingWay=Parttime&position=Nhân viên&province=05&district=02",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "PHP"
+										},
+										{
+											"key": "profession",
+											"value": "26"
+										},
+										{
+											"key": "salary",
+											"value": "3 - 5 triệu"
+										},
+										{
+											"key": "workingWay",
+											"value": "Parttime"
+										},
+										{
+											"key": "position",
+											"value": "Nhân viên"
+										},
+										{
+											"key": "province",
+											"value": "05"
+										},
+										{
+											"key": "district",
+											"value": "02"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail recruiment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruitment/detail/644823e72c1969d983659934",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"detail",
+										"644823e72c1969d983659934"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Save recruitment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruitment/save/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"save",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Công ty",
+					"item": []
+				}
+			]
+		}
+	]
+}

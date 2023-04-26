@@ -12,15 +12,13 @@ const user = new Schema(
 
         position: { type: String },
 
-        applicant: {
-            CV: { type: String },
-            education: { type: String },
-            introduction: { type: String },
-            skills: { type: Array },
-            speciality: { type: Array },
-            achivements: { type: Array },
-            professions: { type: Array }
-        }
+        CV: { type: String },
+        education: { type: String },
+        introduction: { type: String },
+        skills: { type: Array },
+        speciality: { type: Array },
+        achivements: { type: Array },
+        professions: { type: Array }
     },
 )
 
