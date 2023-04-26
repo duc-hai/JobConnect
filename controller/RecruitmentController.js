@@ -254,6 +254,38 @@ class RecruitmentController {
             })
         }
     }
+
+    async detailRecruitment (req, res, next) {
+        try {
+            const id = req.params.id
+            if (!id) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'ID recruiment is required'
+                })
+            }
+
+            const recruitment = await Recruitment.findById(id)
+            
+            if (!recruitment) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: `Can not get recruitment by ID ${id}`
+                })
+            }
+
+            return res.status(200).json({
+                status: 'OK',
+                recruitment
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
 }
 
 module.exports = new RecruitmentController()
