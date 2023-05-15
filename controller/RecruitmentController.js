@@ -18,7 +18,7 @@ class RecruitmentController {
             recruitment = await recruitment.save()
             return res.status(200).json({
                 status: 'OK',
-                message: 'Recruitment created successfully'
+                message: `Recruitment created successfully with id ${recruitment.id}`
             })
         }
         catch (err) {

@@ -3,6 +3,14 @@ const Company = require('../models/Company')
 class CompanyController {
     async createProfile(req, res, next) {
         try {
+            const isExistProfile = await Company.findOne({idUser: req.user.id})
+            if (isExistProfile) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'You created your company profile, please update this'
+                })
+            }
+            console.log(isExistProfile)
             //console.log(req.body)
             //console.log(req.files)
             if (req.files.length != 0) {
