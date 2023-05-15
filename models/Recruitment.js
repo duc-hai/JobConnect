@@ -28,7 +28,6 @@ const recruitment = new Schema (
         deadlineSubmis: {type: Date},
         profession: {type: Number},
         idCompany: {type: String},
-        savedRecruitment: {type: Array},
         appliedUser: {type: Array},
     },
     {

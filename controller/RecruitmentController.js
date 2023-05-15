@@ -356,13 +356,24 @@ class RecruitmentController {
                 })
             }
 
-            const userId = req.user._id
-            const appliedJob = (await User.findById(userId).lean()).appliedJob
-            if (!appliedJob) {
+            //Check whether is exist or not
+            let checkExist = await Recruitment.findById(id)
+            if (!checkExist) {
                 return res.status(400).json({
                     status: 'error',
-                    messag: 'Can not find applied job in database'
+                    message: `Can not find recruitment with ID ${id}`
                 })
+            }
+
+            const userId = req.user._id
+
+            let appliedJob = (await User.findById(userId).lean()).appliedJob
+            if (!appliedJob) {
+                // return res.status(400).json({
+                //     status: 'error',
+                //     message: 'Can not find applied job in database'
+                // })
+                appliedJob = []
             }
 
             //Check job is exist in applied jobs
@@ -391,7 +402,6 @@ class RecruitmentController {
             }
 
             appliedJob.push(newApplyJob)
-
             //console.log(userId)
             //console.log(appliedJob)
 
@@ -399,13 +409,14 @@ class RecruitmentController {
                 { _id: userId },
                 { appliedJob }
             )
-
-            const userListApplied = (await Recruitment.findById(id)).appliedUser
+            
+            //Add id user applied to collection "Recruitment"
+            const userListApplied = (await Recruitment.findById(id)).appliedUser || []
 
             //console.log(userListApplied)
             userListApplied.push(userId)
 
-            const companyInfo = await Recruitment.findByIdAndUpdate(id, { appliedUser: userListApplied })
+            const recruitmentInfor = await Recruitment.findByIdAndUpdate(id, { appliedUser: userListApplied })
 
             //console.log(companyInfo)
 
@@ -413,7 +424,7 @@ class RecruitmentController {
                 status: 'OK',
                 message: `Apply recruitment with id ${id} successfully`,
                 userInfo,
-                companyInfo
+                recruitmentInfor
             })
         }
         catch (err) {
