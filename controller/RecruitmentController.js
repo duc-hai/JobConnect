@@ -1,6 +1,5 @@
 const Recruitment = require('../models/Recruitment')
 const User = require('../models/User')
-const moment = require('moment')
 
 class RecruitmentController {
     async addRecruitment(req, res, next) {
