@@ -12,9 +12,6 @@ class RecruitmentController {
                 req.body.idCompany = req.company.id
             }
             let recruitment = new Recruitment(req.body)
-            var datetime = new Date()
-            datetime.setHours(datetime.getHours() + 7)
-            recruitment.createdAt = datetime
             recruitment = await recruitment.save()
             return res.status(200).json({
                 status: 'OK',
@@ -82,7 +79,7 @@ class RecruitmentController {
                     message: `Can not find recruitment with id: ${req.params.id}`
                 })
             }
-
+            //Soft delete, set "deleted" is true in database without permanently deleted
             const rel = await Recruitment.delete({ _id: req.params.id, idCompany: companyId })
 
             return res.status(200).json({
@@ -159,6 +156,12 @@ class RecruitmentController {
 
             const updateRecruitment = await Recruitment.findOneAndUpdate({ _id: req.params.id, idCompany: companyId }, req.body)
 
+            if (!updateRecruitment) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: `Can not find suitable recruitment`,
+                })
+            }
             const newRecruitment = await Recruitment.findOne({ _id: req.params.id, idCompany: companyId })
 
             return res.status(200).json({
@@ -206,7 +209,7 @@ class RecruitmentController {
         }
     }
 
-    async searchRecruitment (req, res, next) {
+    async searchRecruitment(req, res, next) {
         try {
             const { q, profession, salary, workingWay, position, province, district } = req.query //Get all field search from query
             //Check all fields is empty or not, if not empty, add to object to search
@@ -256,7 +259,7 @@ class RecruitmentController {
         }
     }
 
-    async detailRecruitment (req, res, next) {
+    async detailRecruitment(req, res, next) {
         try {
             const id = req.params.id
             if (!id) {
@@ -267,7 +270,7 @@ class RecruitmentController {
             }
 
             const recruitment = await Recruitment.findById(id)
-            
+
             if (!recruitment) {
                 return res.status(400).json({
                     status: 'error',
@@ -288,7 +291,7 @@ class RecruitmentController {
         }
     }
 
-    async saveRecruitment (req, res, next) {
+    async saveRecruitment(req, res, next) {
         try {
             const id = req.params.id
             if (!id) {
@@ -310,13 +313,13 @@ class RecruitmentController {
             // console.log(idUser)
             // let savedRecruitment = await User.findById(idUser).savedRecruitment
             // //let savedRecruitment = recruitment.savedRecruitment
-            let savedRecruitment = await User.updateOne({_id: idUser}, { $set: { 'savedRecruitment' : [id]} }, {multi:true})
+            let savedRecruitment = await User.updateOne({ _id: idUser }, { $set: { 'savedRecruitment': [id] } }, { multi: true })
             //savedRecruitment['savedRecruitment'] = [id]
             //await savedRecruitment.save()
             // if (!savedRecruitment) {
             //     savedRecruitment = []
             // }
-            
+
             // savedRecruitment.push(id)
             // console.log(savedRecruitment)
             // //recruitment['savedRecruitment'] = savedRecruitment
@@ -337,11 +340,11 @@ class RecruitmentController {
         }
     }
 
-    async applyRecruitment (req, res, next) {
+    async applyRecruitment(req, res, next) {
         try {
             //ID recruitment
             const id = req.params.id
-            
+
             if (!id) {
                 return res.status(400).json({
                     status: 'error',
@@ -387,18 +390,18 @@ class RecruitmentController {
 
             //console.log(userId)
             //console.log(appliedJob)
-            
+
             const userInfo = await User.findOneAndUpdate(
-                {_id: userId},
-                {appliedJob}
+                { _id: userId },
+                { appliedJob }
             )
-            
+
             const userListApplied = (await Recruitment.findById(id)).appliedUser
-            
+
             //console.log(userListApplied)
             userListApplied.push(userId)
 
-            const companyInfo = await Recruitment.findByIdAndUpdate(id, {appliedUser: userListApplied})
+            const companyInfo = await Recruitment.findByIdAndUpdate(id, { appliedUser: userListApplied })
 
             //console.log(companyInfo)
 

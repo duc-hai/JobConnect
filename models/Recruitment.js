@@ -4,6 +4,9 @@ const slug = require('mongoose-slug-generator')
 
 const Schema = mongoose.Schema
  
+var datetime = new Date()
+datetime.setHours(datetime.getHours() + 7)
+
 const recruitment = new Schema (
     {
         title: {type: String},
@@ -26,7 +29,7 @@ const recruitment = new Schema (
         profession: {type: Number},
         idCompany: {type: String},
         savedRecruitment: {type: Array},
-        appliedUser: {type: Array}
+        appliedUser: {type: Array},
     },
     {
         timestamps: true,
@@ -35,9 +38,22 @@ const recruitment = new Schema (
 
 recruitment.index({title: 'text'}) //create an index to support text search
 
+//Middlewares set correctly current datetime
+recruitment.pre('save', function (next) {
+    this.updatedAt = datetime
+    this.createdAt = datetime
+    next()
+})
+
+recruitment.pre('findOneAndUpdate', function (next) {
+    this.set({ updatedAt: datetime });
+    next()
+})
+
 mongoose.plugin(slug)
 recruitment.plugin(mongooseDelete, {
     deletedAt: true,
+    validateBeforeDelete: true,
     overrideMethods: 'all',
 });
 

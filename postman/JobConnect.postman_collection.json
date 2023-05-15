@@ -107,7 +107,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{Access_Token}}",
+											"value": "{{Access_Token_Recruiter}}",
 											"type": "string"
 										}
 									]
@@ -197,12 +197,12 @@
 										},
 										{
 											"key": "address[district]",
-											"value": "02",
+											"value": "Quận 7",
 											"type": "text"
 										},
 										{
 											"key": "address[province]",
-											"value": "05",
+											"value": "Hồ Chí Minh",
 											"type": "text"
 										},
 										{
@@ -239,6 +239,12 @@
 											"key": "benefit",
 											"value": "Nghỉ vào các ngày cuối tuần, ngày lễ, lương thưởng đầy đủ",
 											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -291,7 +297,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "644819d21ed003d3082433a2"
+											"value": "6461b6484c9e850e11c0c251"
 										}
 									]
 								}
@@ -316,7 +322,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "644823e72c1969d983659934"
+											"value": "6461a984723ed443d5f8f37c"
 										}
 									]
 								}
@@ -423,7 +429,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "644823e72c1969d983659934"
+											"value": "6461b6484c9e850e11c0c251"
 										}
 									]
 								}
