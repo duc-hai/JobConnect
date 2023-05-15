@@ -161,6 +161,64 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Update profile company",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "logo",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "Nguyễn Hữu Thọ, Tân Phong, Q7, TP.HCM",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "website",
+											"value": "https://career.com.vn",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Career Company",
+											"type": "text"
+										},
+										{
+											"key": "employees",
+											"value": "3000",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "introduction",
+											"value": "Công ty thành lập năm 2000, với bề dày hơn 23 năm phát triển\n",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/update-profile-company",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"update-profile-company"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -297,7 +355,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6461b6484c9e850e11c0c251"
+											"value": "6461c619f5952f8d01b17832"
 										}
 									]
 								}
@@ -442,7 +500,23 @@
 					"name": "Đơn ứng tuyển",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "View application letter",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "View profile applicant",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Update apply status",
 							"request": {
 								"method": "GET",
 								"header": []
@@ -699,14 +773,80 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Report recruitment",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "View saved recruitment",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "View applied recruitment",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
 						}
 					]
 				},
 				{
 					"name": "Công ty",
-					"item": []
+					"item": [
+						{
+							"name": "Search companies",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get companies",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get company profile",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hồ sơ",
+					"item": [
+						{
+							"name": "Update profile",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "Quản trị website",
+			"item": []
 		}
 	]
 }
