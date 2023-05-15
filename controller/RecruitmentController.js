@@ -484,6 +484,109 @@ class RecruitmentController {
             })
         }
     }
+
+    async applicationLetters (req, res, next) {
+        try {
+            const idCompany = req.company.id
+            const idRecruitment = req.params.id 
+            const isCompanyValid = await Recruitment.findOne({idCompany, _id: idRecruitment})
+
+            if (!isCompanyValid) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'Recruitment is not found'
+                })
+            }
+
+            const applicationLettersList = isCompanyValid.appliedUser
+
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Get applied user successfully',
+                applicationLettersList
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
+
+    async profileApplicant (req, res, next) {
+        try {
+            const idApplicant = req.params.id
+            const profileApplicant = await User.findOne({_id: idApplicant, role: 1})
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Get profile successfully applied',
+                profileApplicant
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
+
+    async updateApplyStatus (req, res, next) {
+        try {
+            const {idUser, idRecruitment, status} = req.body
+
+            //Validator id
+            if (!idUser || !idRecruitment) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'ID applicant and ID recruitment is required'
+                })
+            }
+
+            //Validator status
+            if (!status) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'Status of application letter is required'
+                })
+            }
+            
+            //Get applied job list in collection "user"
+            let appliedJobList = (await User.findById(idUser)).appliedJob
+            if (!appliedJobList) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'User or applied job list are not exist'
+                })
+            }
+
+            //Get applied job suitable for id parameter
+            for (let i = 0; i < appliedJobList.length; i++) {
+                if (appliedJobList[i].jobId == idRecruitment) {
+                    appliedJobList[i].response = {
+                        code: req.body.code || 0,
+                        message: status
+                    }
+                    break
+                }
+            }
+
+            //Update
+            await User.findByIdAndUpdate(idUser, {appliedJob: appliedJobList})
+
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Updated applied job successfully'
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
 }
 
 module.exports = new RecruitmentController()

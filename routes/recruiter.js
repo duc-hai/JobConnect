@@ -11,7 +11,6 @@ const uploadCompany = require('../middlewares/multerCompany')
 const RecruitmentController = require('../controller/RecruitmentController')
 const CompanyController = require('../controller/CompanyController')
 
-
 router.get('/', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/home', {layout: 'recruiter'})
 })
@@ -48,10 +47,16 @@ router.put('/updateRecruitment/:id', jwtGuard.jwtTokenValidator, upload.single('
 
 router.post('/update-profile-company', jwtGuard.jwtTokenValidator, uploadCompany.array('logo'), CompanyController.updateProfile)
 
+router.get('/application-letters/:id', jwtGuard.jwtTokenValidator, RecruitmentController.applicationLetters)
+
 router.get('/create-profile', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/create-profile', {layout: 'recruiter'})
 })
 
+router.get('/profile-applicant/:id', jwtGuard.jwtTokenValidator, RecruitmentController.profileApplicant)
+
 router.post('/create-profile-company', jwtGuard.jwtTokenValidator, uploadCompany.array('logo'), companyController.createProfile)
+
+router.put('/apply-status', RecruitmentController.updateApplyStatus)
 
 module.exports = router;
