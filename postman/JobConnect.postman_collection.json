@@ -503,7 +503,24 @@
 							"name": "View application letter",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruiter/application-letters/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"application-letters",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6461c7e7a81c4aff806e5f5e"
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -511,15 +528,62 @@
 							"name": "View profile applicant",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruiter/profile-applicant/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"profile-applicant",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "644873ae41a6812907c9a4aa"
+										}
+									]
+								}
 							},
 							"response": []
 						},
 						{
 							"name": "Update apply status",
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "idUser",
+											"value": "644873ae41a6812907c9a4aa",
+											"type": "text"
+										},
+										{
+											"key": "idRecruitment",
+											"value": "6461c7e7a81c4aff806e5f5e",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Chấp nhận phỏng vấn",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruiter/apply-status",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruiter",
+										"apply-status"
+									]
+								}
 							},
 							"response": []
 						}
@@ -647,7 +711,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/recruitment/search?q=PHP&profession=26&salary=3 - 5 triệu&workingWay=Parttime&position=Nhân viên&province=05&district=02",
+									"raw": "{{baseURL}}/recruitment/search?q=Lập trình viên",
 									"host": [
 										"{{baseURL}}"
 									],
@@ -658,31 +722,37 @@
 									"query": [
 										{
 											"key": "q",
-											"value": "PHP"
+											"value": "Lập trình viên"
 										},
 										{
 											"key": "profession",
-											"value": "26"
+											"value": "26",
+											"disabled": true
 										},
 										{
 											"key": "salary",
-											"value": "3 - 5 triệu"
+											"value": "3 - 5 triệu",
+											"disabled": true
 										},
 										{
 											"key": "workingWay",
-											"value": "Parttime"
+											"value": "Parttime",
+											"disabled": true
 										},
 										{
 											"key": "position",
-											"value": "Nhân viên"
+											"value": "Nhân viên",
+											"disabled": true
 										},
 										{
 											"key": "province",
-											"value": "05"
+											"value": "05",
+											"disabled": true
 										},
 										{
 											"key": "district",
-											"value": "02"
+											"value": "02",
+											"disabled": true
 										}
 									]
 								}
@@ -695,14 +765,20 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/recruitment/detail/644823e72c1969d983659934",
+									"raw": "{{baseURL}}/recruitment/detail/:id",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"recruitment",
 										"detail",
-										"644823e72c1969d983659934"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6461c7e7a81c4aff806e5f5e"
+										}
 									]
 								}
 							},
@@ -726,7 +802,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": null
+											"value": "6461c7e7a81c4aff806e5f5e"
 										}
 									]
 								}
@@ -767,7 +843,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6448c0489f06086c0d513f17"
+											"value": "6461c7e7a81c4aff806e5f5e"
 										}
 									]
 								}
@@ -786,7 +862,17 @@
 							"name": "View saved recruitment",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruitment/save",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"save"
+									]
+								}
 							},
 							"response": []
 						},
@@ -794,7 +880,17 @@
 							"name": "View applied recruitment",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/recruitment/apply",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"apply"
+									]
+								}
 							},
 							"response": []
 						}
@@ -807,7 +903,23 @@
 							"name": "Search companies",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/company/search?q=Career",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"company",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Career"
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -815,7 +927,17 @@
 							"name": "Get companies",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/company/get-list",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"company",
+										"get-list"
+									]
+								}
 							},
 							"response": []
 						},
@@ -823,7 +945,23 @@
 							"name": "Get company profile",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/company/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"company",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "64481131cb3fc45aab11f194"
+										}
+									]
+								}
 							},
 							"response": []
 						}
