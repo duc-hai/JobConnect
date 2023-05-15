@@ -1,5 +1,6 @@
 const Recruitment = require('../models/Recruitment')
 const User = require('../models/User')
+const moment = require('moment')
 
 class RecruitmentController {
     async addRecruitment(req, res, next) {
@@ -11,6 +12,9 @@ class RecruitmentController {
                 req.body.idCompany = req.company.id
             }
             let recruitment = new Recruitment(req.body)
+            var datetime = new Date()
+            datetime.setHours(datetime.getHours() + 7)
+            recruitment.createdAt = datetime
             recruitment = await recruitment.save()
             return res.status(200).json({
                 status: 'OK',
@@ -180,10 +184,6 @@ class RecruitmentController {
             //
             let skip = (perPage * page) - perPage //In first page, skip 0 index
             let recruitments = await Recruitment.find({}, null, { limit: perPage, skip: skip }).lean()
-            // for (let i = 0; i < recruitments.length; i++) {
-            //     let companyName = await CompanyController.getCompanyName(recruitments[i].idCompany)
-            //     recruitments[i]['companyName'] = companyName
-            // }
 
             const count = await Recruitment.countDocuments({}) //Get number of pages
             const paginationRe = {
