@@ -274,7 +274,7 @@ class RecruitmentController {
             if (!recruitment) {
                 return res.status(400).json({
                     status: 'error',
-                    message: `Can not get recruitment by ID ${id}`
+                    message: `Can not find recruitment with ID ${id}`
                 })
             }
 
@@ -310,26 +310,30 @@ class RecruitmentController {
             }
 
             const idUser = req.user._id
-            // console.log(idUser)
-            // let savedRecruitment = await User.findById(idUser).savedRecruitment
-            // //let savedRecruitment = recruitment.savedRecruitment
-            let savedRecruitment = await User.updateOne({ _id: idUser }, { $set: { 'savedRecruitment': [id] } }, { multi: true })
-            //savedRecruitment['savedRecruitment'] = [id]
-            //await savedRecruitment.save()
-            // if (!savedRecruitment) {
-            //     savedRecruitment = []
-            // }
+            let savedList = await User.findById(idUser)
 
-            // savedRecruitment.push(id)
-            // console.log(savedRecruitment)
-            // //recruitment['savedRecruitment'] = savedRecruitment
-            // //console.log(recruitment)
-            // let result = await User.findByIdAndUpdate(idUser, {savedRecruitment: savedRecruitment})
-            //let result = await User.findByIdAndUpdate(idUser, savedRecruitment)
+            //Check whether user has any job or not, if it empty, initialize a new array
+            if (savedList) {
+                savedList = savedList.savedJob
+            }
+            else {
+                savedList = []
+            }
+            //If recruitment is exist in "Saved job", remove it, else push to list
+            let index = savedList.indexOf(id)
+            let action = 'removed in saved job list'
+            if (index > -1) {
+                savedList.splice(index, 1)
+            }
+            else {
+                action = 'added bookmark'
+                savedList.push(id)
+            }
+            let savedRecruitment = await User.findOneAndUpdate({ _id: idUser }, {savedJob : savedList})
+            
             return res.status(500).json({
                 status: 'OK',
-                message: `The recruitment with ID ${id} added bookmark successfully`,
-                //result
+                message: `The recruitment with ID ${id} ${action} successfully`,
             })
         }
         catch (err) {

@@ -1,7 +1,6 @@
 const { verify } = require('jsonwebtoken')
 const Account = require('../models/Account')
 const User = require('../models/User')
-const Company = require('../models/Company')
 
 exports.jwtTokenValidator = async (req, res, next) => {
     try {
@@ -36,11 +35,7 @@ exports.jwtTokenValidator = async (req, res, next) => {
         }
 
         const user = await User.findById(verified.userId)
-        if (user.role == 2) {
-            const company = await Company.findOne({ idUser : user.id})
-            req.company = company
-        }
-        else {
+        if (user.role != 1) {
             return res.status(401).json({
                 status: 'error',
                 message: "Unauthorized, your role account is not suitable for this"

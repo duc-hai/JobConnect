@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const jwtGuard = require('../middlewares/jwtTokenGuard')
+const jwtGuard = require('../middlewares/jwtTokenGuardApplicant')
 const recruitmentController = require('../controller/RecruitmentController')
 
 router.get('/search', recruitmentController.searchRecruitment)
