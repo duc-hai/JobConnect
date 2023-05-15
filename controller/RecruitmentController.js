@@ -434,6 +434,56 @@ class RecruitmentController {
             })
         }
     }
+
+    async viewSavedRecruitment (req, res, next) {
+        try {
+            const userId = req.user._id
+            const listSavedRecruitments = (await User.findById(userId)).savedJob
+            if (!listSavedRecruitments) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'Something wrong happened, your saved job is not exist'
+                })
+            }
+
+            return res.status(200).json({
+                status: 'OK',
+                message: `Get saved job successfully`,
+                listSavedRecruitments
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
+
+    async viewAppliedRecruitment (req, res, next) {
+        try {
+            const userId = req.user._id
+            const listSavedRecruitments = (await User.findById(userId)).appliedJob
+            if (!listSavedRecruitments) {
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'Something wrong happened, your applied job is not exist'
+                })
+            }
+
+            return res.status(200).json({
+                status: 'OK',
+                message: `Get applied job successfully`,
+                listSavedRecruitments
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
 }
 
 module.exports = new RecruitmentController()

@@ -17,6 +17,8 @@ const company = new Schema (
     },
 )
 
+company.index({name: 'text'}) //create an index to support text search
+
 company.plugin(mongooseDelete, {
     deletedAt: true,
     overrideMethods: 'all',
