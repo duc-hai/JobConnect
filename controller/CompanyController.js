@@ -10,10 +10,10 @@ class CompanyController {
                     message: 'You created your company profile, please update this'
                 })
             }
-            console.log(isExistProfile)
+            //console.log(isExistProfile)
             //console.log(req.body)
             //console.log(req.files)
-            if (req.files.length != 0) {
+            if (req.files && req.files.length != 0) {
                 if (req.files.length == 1) {
                     req.body.logo = req.files[0].filename
                 }
@@ -35,6 +35,39 @@ class CompanyController {
             return res.status(200).json({
                 status: 'OK',
                 message: 'Created company profile successfully'
+            })
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: err.message
+            })
+        }
+    }
+
+    async updateProfile (req, res, next) {
+        try {
+            if (req.files && req.files.length != 0) {
+                if (req.files.length == 1) {
+                    req.body.logo = req.files[0].filename
+                }
+                else if (req.files.length == 2) {
+                    req.body.logo = req.files[0].filename
+                    req.body.coverImg = req.files[1].filename
+                }
+                else {
+                    return res.status(400).json({
+                        status: 'error',
+                        message: 'you uploaded the wrong number of files'
+                    })
+                }
+            }
+
+            const rel = await Company.findOneAndUpdate({idUser: req.user.id}, req.body, {new: true})
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Company profile was updated successfully',
+                newProfile: rel
             })
         }
         catch (err) {

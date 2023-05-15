@@ -9,6 +9,7 @@ const jwtGuard = require('../middlewares/jwtTokenGuard')
 const upload = require('../middlewares/multerRecruitment')
 const uploadCompany = require('../middlewares/multerCompany')
 const RecruitmentController = require('../controller/RecruitmentController')
+const CompanyController = require('../controller/CompanyController')
 
 
 router.get('/', jwtGuard.jwtTokenValidator, (req, res) => {
@@ -44,6 +45,8 @@ router.delete('/deleteRecruitment/:id', jwtGuard.jwtTokenValidator, recruitmentC
 router.get('/detailRecruitment/:id', jwtGuard.jwtTokenValidator, recruitmentController.detailRecruitmentByCompany)
 
 router.put('/updateRecruitment/:id', jwtGuard.jwtTokenValidator, upload.single('image'), RecruitmentController.updateRecruitmentByCompany)
+
+router.post('/update-profile-company', jwtGuard.jwtTokenValidator, uploadCompany.array('logo'), CompanyController.updateProfile)
 
 router.get('/create-profile', jwtGuard.jwtTokenValidator, (req, res) => {
     res.render('recruiter/create-profile', {layout: 'recruiter'})
