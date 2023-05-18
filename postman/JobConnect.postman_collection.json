@@ -571,6 +571,11 @@
 											"key": "status",
 											"value": "Chấp nhận phỏng vấn",
 											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "1",
+											"type": "text"
 										}
 									]
 								},
@@ -973,8 +978,62 @@
 						{
 							"name": "Update profile",
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullName",
+											"value": "Lưu Đức Hải",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/C:/Users/Luu Duc Hai/Downloads/LuuDucHai.jpg"
+										},
+										{
+											"key": "education",
+											"value": "Junior in Ton Duc Thang University",
+											"type": "text"
+										},
+										{
+											"key": "introduction",
+											"value": "Backend developer",
+											"type": "text"
+										},
+										{
+											"key": "skills[0]",
+											"value": "Service Oriented Architecture",
+											"type": "text"
+										},
+										{
+											"key": "speciality[0]",
+											"value": "Backend developer",
+											"type": "text"
+										},
+										{
+											"key": "achivements[0]",
+											"value": "Scholarship in 2021",
+											"type": "text"
+										},
+										{
+											"key": "professions[0]",
+											"value": "Developer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/update-profile",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"update-profile"
+									]
+								}
 							},
 							"response": []
 						}
