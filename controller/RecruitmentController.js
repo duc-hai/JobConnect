@@ -36,7 +36,7 @@ class RecruitmentController {
 
             const companyId = req.company.id
 
-            let recruitments = await Recruitment.find({ idCompany: companyId })
+            let recruitments = await Recruitment.find({ idCompany: companyId }).sort({date: -1})
             return res.status(200).json({
                 status: 'OK',
                 recruitments

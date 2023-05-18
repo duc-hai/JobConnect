@@ -20,14 +20,14 @@ Job Connect is a software that helps connect between applicant and recruiter
 ```
 mongorestore --db=jobconnect database/jobconnect/ --uri="mongodb://localhost:27017"
 ```
+`jobconnect` is database name and `mongodb://localhost:27017` is connection string
 
-See DB Tool details: [here](https://www.mongodb.com/docs/database-tools/mongoimport/)
-- Export collection: 
+- Export collection (it's not compulsory)
 ```
 mongodump --db=jobconnect --uri="mongodb://localhost:27017" --out="database"
 ```
 
-### Config
+### Configs
 - Can config host, port, database name, connection string in folder `config`
 
 ### Running project
@@ -46,4 +46,8 @@ npm start
 - Recruiter: recruiter@gmail.com / 123456
 
 ### Authors
-- Lưu Đức Hải
+- Luu Duc Hai
+- Truong Thi Ngan Tram
+### References
+- See DB Tool details: [here](https://www.mongodb.com/docs/database-tools/mongoimport/)
+- Mongoose queries: [here](https://mongoosejs.com/docs/queries.html)
