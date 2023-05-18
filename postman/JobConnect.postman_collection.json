@@ -380,7 +380,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6461a984723ed443d5f8f37c"
+											"value": "6461c7e7a81c4aff806e5f5e"
 										}
 									]
 								}
@@ -858,8 +858,41 @@
 						{
 							"name": "Report recruitment",
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "idReport",
+											"value": "23iuoeuqwioeuqowie",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "ieqwueoiqweuoqwe",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": [
+												"/C:/Users/Luu Duc Hai/Downloads/gitlab.duthu.net_S52000657_jobconnect_-_commits_main.png",
+												"/C:/Users/Luu Duc Hai/Downloads/LuuDucHai.jpg"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/recruitment/report",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"recruitment",
+										"report"
+									]
+								}
 							},
 							"response": []
 						},

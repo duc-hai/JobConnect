@@ -7,6 +7,7 @@ Job Connect is a software that helps connect between applicant and recruiter
 - [MongoDB Compass](https://www.mongodb.com/try/download/community) 
 - [Database tools](https://www.mongodb.com/docs/database-tools/) (Remember see [installation guide](https://www.mongodb.com/docs/database-tools/installation/installation/) fit your OP to run db tools, it is compulsory)
 - IDE or Editor JS (Ex: [VSCode](https://code.visualstudio.com/download))
+- [Postman](https://www.postman.com/downloads/)
 
 ### Import database
 1. Open MongoDB Compass, click Connect to create a connection (copy your connection string)
@@ -16,7 +17,7 @@ Job Connect is a software that helps connect between applicant and recruiter
     `use jobconnect`
 3. Then, open CLI 
     - Navigate to project `cd <path to project>`
-    - Type: 
+    - Enter to command line: 
 ```
 mongorestore --db=jobconnect database/jobconnect/ --uri="mongodb://localhost:27017"
 ```
@@ -27,7 +28,7 @@ mongorestore --db=jobconnect database/jobconnect/ --uri="mongodb://localhost:270
 
 ### Running project
 1. Open cmd (terminal) and navigate to project
-2. Type: 
+2. Enter to command line: 
 ```
 node app.js
 ```
@@ -35,6 +36,10 @@ or run in dev mode:
 ```
 npm start
 ```
+
+### Postman API
+1. Import postman collections in folder `postman`
+2. Run API in each requests
 
 ### Accounts
 - Applicant: luuduchai@gmail.com / 123456
