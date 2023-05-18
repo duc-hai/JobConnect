@@ -66,8 +66,8 @@ class AccountController {
 
     async loginAccountRecruiter(req, res, next) {
         const { email, password } = req.body
-        let result = validationResult(req)
-        if (result.errors.length !== 0) {
+        let result = validationResult(req) //Get errors in validation result 
+        if (result.errors.length !== 0) { //Has some errors
             result = result.mapped()
             let msg
             for (let i in result) {
@@ -112,7 +112,7 @@ class AccountController {
 
     async registerAccount(req, res, next) {
         const { name, email, password, confirmPassword } = req.body
-        let result = validationResult(req)
+        let result = validationResult(req) //Check validation
         if (result.errors.length !== 0) {
             result = result.mapped()
             let msg
@@ -135,7 +135,7 @@ class AccountController {
                     message: 'Email đã tồn tại'
                 })
             }
-
+            
             let newUser = new User({
                 fullName: name,
                 role: 1
