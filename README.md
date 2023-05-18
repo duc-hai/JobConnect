@@ -40,6 +40,9 @@ npm start
 ### Postman API
 1. Import postman collections in folder `postman`
 2. Run API in each requests
+3. Create enviroment variables:
+- `baseURL` with value is url to website (Ex: http://localhost:3000)
+- `Access_Token_Recruiter` with value is access token get from login function
 
 ### Accounts
 - Applicant: luuduchai@gmail.com / 123456
