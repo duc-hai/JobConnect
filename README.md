@@ -6,7 +6,7 @@ Job Connect is a software that helps connect between applicant and recruiter
 ### Design Analysis documentation
 - Technologies: NodeJS (ExpressJS), View Engine Handlebars, MongoDB, ...
 - Code API, suitable for microservices architecture (SOA subject)
-- Documentation: [here]()
+- Documentation: [here](https://drive.google.com/file/d/1oE_LjauHoKv_XYRK7oxSQ97aqS6jaQbI/view?usp=sharing)
 
 ### Installations
 - [MongoDB Compass](https://www.mongodb.com/try/download/community) 
@@ -59,7 +59,7 @@ Notes: If you see json returned with message: 'Unauthorized, please check your l
 - API with acctors recruiter and applicant (actor admin has the same way to code as both)
 - Layout: 
     - Home page
-    - Recruiter page with link: /recruiter/login first, then you redirect to home page recruiter. You can use functional: 'Tạo hồ sơ doanh nghiệp' and 'Tạo mới tin tuyển dụng' in 'Quản lý tin tuyển dụng' in the left sidebar.
+    - Recruiter page with link: /recruiter/login first, then you redirect to home page recruiter. You can use functional: 'Tạo hồ sơ doanh nghiệp' and 'Tạo mới tin tuyển dụng' inside 'Quản lý tin tuyển dụng' in the left sidebar.
 
 ### API documentation
 - You can use based on collections avalable in postman folder
