@@ -241,7 +241,7 @@
 										{
 											"key": "image",
 											"type": "file",
-											"src": "/C:/Users/Luu Duc Hai/Downloads/add-to-cart.png"
+											"src": []
 										},
 										{
 											"key": "salary",
@@ -865,20 +865,20 @@
 									"formdata": [
 										{
 											"key": "idReport",
-											"value": "23iuoeuqwioeuqowie",
+											"value": "3931223",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "ieqwueoiqweuoqwe",
+											"value": "Lừa đảo",
 											"type": "text"
 										},
 										{
 											"key": "images",
 											"type": "file",
 											"src": [
-												"/C:/Users/Luu Duc Hai/Downloads/gitlab.duthu.net_S52000657_jobconnect_-_commits_main.png",
-												"/C:/Users/Luu Duc Hai/Downloads/LuuDucHai.jpg"
+												"/C:/Users/Luu Duc Hai/Downloads/usecase-Quản lý tin tuyển dụng.drawio (3).png",
+												"/C:/Users/Luu Duc Hai/Downloads/usecase-Quản lý tin tuyển dụng.drawio (2).png"
 											]
 										}
 									]
