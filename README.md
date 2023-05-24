@@ -6,7 +6,7 @@ Job Connect is a software that helps connect between applicant and recruiter
 ### Design Analysis documentation
 - Technologies: NodeJS (ExpressJS), View Engine Handlebars, MongoDB, ...
 - Code API, suitable for microservices architecture (SOA subject)
-- Documentation: [here](https://drive.google.com/file/d/1oE_LjauHoKv_XYRK7oxSQ97aqS6jaQbI/view?usp=sharing)
+- Documentation (important): [here](https://drive.google.com/file/d/1oE_LjauHoKv_XYRK7oxSQ97aqS6jaQbI/view?usp=sharing)
 
 ### Installations
 - [MongoDB Compass](https://www.mongodb.com/try/download/community) 
@@ -63,14 +63,14 @@ Notes: If you see json returned with message: 'Unauthorized, please check your l
 
 ### API documentation
 - You can use based on collections avalable in postman folder
-- Get in the [Design Analysis document](#Design-Analysis-documentation)
+- Get API document in the [Design Analysis document](#Design-Analysis-documentation)
 
 ### Accounts
 - Applicant: luuduchai@gmail.com / 123456
 - Recruiter: recruiter@gmail.com / 123456
 
 ### Author
-- Luu Duc Hai
+- [Luu Duc Hai](mailto:luuduchai.nt@gmail.com)
 
 ### References
 - Export collection command:
