@@ -1,5 +1,6 @@
 const Recruitment = require('../models/Recruitment')
 const User = require('../models/User')
+const CompanyController = require('../controller/CompanyController')
 
 class RecruitmentController {
     async addRecruitment(req, res, next) {
@@ -36,7 +37,7 @@ class RecruitmentController {
 
             const companyId = req.company.id
 
-            let recruitments = await Recruitment.find({ idCompany: companyId }).sort({date: -1})
+            let recruitments = await Recruitment.find({ idCompany: companyId }).sort({ date: -1 })
             return res.status(200).json({
                 status: 'OK',
                 recruitments
@@ -322,8 +323,8 @@ class RecruitmentController {
                 action = 'added bookmark'
                 savedList.push(id)
             }
-            let savedRecruitment = await User.findOneAndUpdate({ _id: idUser }, {savedJob : savedList})
-            
+            let savedRecruitment = await User.findOneAndUpdate({ _id: idUser }, { savedJob: savedList })
+
             return res.status(500).json({
                 status: 'OK',
                 message: `The recruitment with ID ${id} ${action} successfully`,
@@ -398,7 +399,7 @@ class RecruitmentController {
                 { _id: userId },
                 { appliedJob }
             )
-            
+
             //Add id user applied to collection "Recruitment"
             const userListApplied = (await Recruitment.findById(id)).appliedUser || []
 
@@ -424,7 +425,7 @@ class RecruitmentController {
         }
     }
 
-    async viewSavedRecruitment (req, res, next) {
+    async viewSavedRecruitment(req, res, next) {
         try {
             const userId = req.user._id
             const listSavedRecruitments = (await User.findById(userId)).savedJob
@@ -449,7 +450,7 @@ class RecruitmentController {
         }
     }
 
-    async viewAppliedRecruitment (req, res, next) {
+    async viewAppliedRecruitment(req, res, next) {
         try {
             const userId = req.user._id
             const listSavedRecruitments = (await User.findById(userId)).appliedJob
@@ -474,11 +475,11 @@ class RecruitmentController {
         }
     }
 
-    async applicationLetters (req, res, next) {
+    async applicationLetters(req, res, next) {
         try {
             const idCompany = req.company.id
-            const idRecruitment = req.params.id 
-            const isCompanyValid = await Recruitment.findOne({idCompany, _id: idRecruitment})
+            const idRecruitment = req.params.id
+            const isCompanyValid = await Recruitment.findOne({ idCompany, _id: idRecruitment })
 
             if (!isCompanyValid) {
                 return res.status(400).json({
@@ -503,10 +504,10 @@ class RecruitmentController {
         }
     }
 
-    async profileApplicant (req, res, next) {
+    async profileApplicant(req, res, next) {
         try {
             const idApplicant = req.params.id
-            const profileApplicant = await User.findOne({_id: idApplicant, role: 1})
+            const profileApplicant = await User.findOne({ _id: idApplicant, role: 1 })
             return res.status(200).json({
                 status: 'OK',
                 message: 'Get profile successfully applied',
@@ -521,9 +522,9 @@ class RecruitmentController {
         }
     }
 
-    async updateApplyStatus (req, res, next) {
+    async updateApplyStatus(req, res, next) {
         try {
-            const {idUser, idRecruitment, status} = req.body
+            const { idUser, idRecruitment, status } = req.body
 
             //Validator id
             if (!idUser || !idRecruitment) {
@@ -540,7 +541,7 @@ class RecruitmentController {
                     message: 'Status of application letter is required'
                 })
             }
-            
+
             //Get applied job list in collection "user"
             let appliedJobList = (await User.findById(idUser)).appliedJob
             if (!appliedJobList) {
@@ -562,7 +563,7 @@ class RecruitmentController {
             }
 
             //Update
-            await User.findByIdAndUpdate(idUser, {appliedJob: appliedJobList})
+            await User.findByIdAndUpdate(idUser, { appliedJob: appliedJobList })
 
             return res.status(200).json({
                 status: 'OK',
@@ -573,6 +574,25 @@ class RecruitmentController {
             return res.status(500).json({
                 status: 'error',
                 message: err.message
+            })
+        }
+    }
+
+    async getRecruitmentsHome(perPage, page) {
+        try {
+            let skip = (perPage * page) - perPage //In first page, skip 0 index
+            let data = await Recruitment.find({}, null, { limit: perPage, skip: skip }).lean()
+            // console.log(data.countDocuments())
+            for (let i = 0; i < data.length; i++) {
+                let companyName = await CompanyController.getCompanyName(data[i].idCompany)
+                data[i]['companyName'] = companyName
+            }
+            return data
+        }
+        catch (err) {
+            return res.status(500).json({
+                status: 'error',
+                message: `An error occurred: ${err.message}`
             })
         }
     }

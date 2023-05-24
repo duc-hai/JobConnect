@@ -141,6 +141,28 @@ class CompanyController {
             })
         }
     }
+
+    //Get company name by id
+    async getCompanyName (id) {
+        let companyName = await Company.findById(id)
+        .then ((company) => {
+            return company.name
+        })
+        .catch((err) => {
+            console.log(err)
+        })  
+        return companyName
+    }
+
+    async getCompanies (count) {
+        try {
+            let companies = await Company.find({}, null, {limit: count}).lean()
+            return companies
+        }
+        catch (err) {
+            console.log(err.message)
+        }
+    }
 }
 
 module.exports = new CompanyController()

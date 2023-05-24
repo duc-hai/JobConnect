@@ -4,10 +4,11 @@ const recruiterRouter = require('./recruiter')
 const homeRouter = require('./home')
 const recruitmentRouter = require('./recruitment')
 const companyRouter = require('./company')
+const homeController = require('../controller/HomeController')
 
-router.get('/', (req, res) => {
-    res.render('home')
-})
+
+router.get('/', homeController.renderHome)
+
 router.get('/login', (req, res) => {
     res.render('login', {layout: false})
 })

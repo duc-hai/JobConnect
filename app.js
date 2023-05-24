@@ -42,10 +42,10 @@ app.engine('hbs',
                 </li>`
                 for (let i = 1; i <= pages; i++) {
                     if (i == current) {
-                        htmlPag += `<li class="page-item active"><a class="page-link" href="#">${i}</a></li>`
+                        htmlPag += `<li class="page-item active"><a class="page-link" href="/?page=${i}">${i}</a></li>`
                     }
                     else {
-                        htmlPag += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`
+                        htmlPag += `<li class="page-item"><a class="page-link" href="/?page=${i}">${i}</a></li>`
                     }
                 }
                 htmlPag += `<li class="page-item ${next}">
