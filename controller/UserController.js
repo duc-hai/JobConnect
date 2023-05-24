@@ -3,7 +3,7 @@ const User = require('../models/User')
 class UserController {
     async updateProfile (req, res, next) {
         try {
-            console.log(req.body)
+            // console.log(req.body)
 
             if (req.file) {
                 req.body.avatar = req.file.filename

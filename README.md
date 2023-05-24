@@ -28,7 +28,11 @@ mongorestore --db=jobconnect database/jobconnect/ --uri="mongodb://localhost:270
 
 ### Running project
 1. Open cmd (terminal) and navigate to project
-2. Enter to command line: 
+2. Enter to command line (install node_modules folder):
+```
+npm install
+```
+3. Enter to command line to run project: 
 ```
 node app.js
 ```
@@ -48,9 +52,8 @@ npm start
 - Applicant: luuduchai@gmail.com / 123456
 - Recruiter: recruiter@gmail.com / 123456
 
-### Authors
+### Author
 - Luu Duc Hai
-- Truong Thi Ngan Tram
 
 ### References
 - Export collection command:

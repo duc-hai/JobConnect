@@ -237,14 +237,8 @@ class RecruitmentController {
             let recruitments = await Recruitment.find(obj).lean() //search
             //console.log(recruitments)
             let count = await Recruitment.find(obj).lean().countDocuments() //count number of documents which look for
-
-            // for (let i = 0; i < recruitments.length; i++) {
-            //     let companyName = await CompanyController.getCompanyName(recruitments[i].idCompany)
-            //     recruitments[i]['companyName'] = companyName
-            // }
-
             //console.log(recruitments)
-            res.status(200).json({
+            return res.status(200).json({
                 status: 'OK',
                 recruitments,
                 count
@@ -368,10 +362,6 @@ class RecruitmentController {
 
             let appliedJob = (await User.findById(userId).lean()).appliedJob
             if (!appliedJob) {
-                // return res.status(400).json({
-                //     status: 'error',
-                //     message: 'Can not find applied job in database'
-                // })
                 appliedJob = []
             }
 

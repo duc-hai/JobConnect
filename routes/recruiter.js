@@ -59,4 +59,8 @@ router.post('/create-profile-company', jwtGuard.jwtTokenValidator, uploadCompany
 
 router.put('/apply-status', RecruitmentController.updateApplyStatus)
 
+router.use('/', (req, res) => {
+    res.status(404).send('<h1>404 Not Found</h1>')
+})
+
 module.exports = router;

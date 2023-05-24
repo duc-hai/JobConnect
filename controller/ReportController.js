@@ -7,9 +7,9 @@ class ReportController {
             const filesUpload = req.files
             let images = []
             if (filesUpload) {
-                for (let i = 0; i < filesUpload.length; i++) {
-                    images.push(filesUpload[i].filename)
-                }
+                filesUpload.forEach(function (element) {
+                    images.push(element.filename)
+                })
             }
             let userReport
             if (res.locals.typeReport == 1) {
