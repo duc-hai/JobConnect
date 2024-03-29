@@ -7,6 +7,10 @@ Job Connect is a software that helps connect between applicant and recruiter
 - Technologies: NodeJS (ExpressJS), View Engine Handlebars, MongoDB, ...
 - Code API, suitable for microservices architecture (SOA subject)
 - Documentation (important): [here](https://drive.google.com/file/d/1oE_LjauHoKv_XYRK7oxSQ97aqS6jaQbI/view?usp=sharing)
+- UX/UI Design:
+  - Wireframe: [here](https://www.figma.com/file/RAuxQCrMLKrQTj0H8v1aZD/Wirefram-(Updated)?type=design&mode=design&t=GL4ip6dvZd5B2aBY-1)
+  - Mock up: [here](https://www.figma.com/file/KSyqy0WVClyYP052FyrlZg/JobConnect?type=design&node-id=0%3A1&mode=design&t=GL4ip6dvZd5B2aBY-1)
+  - Prototype: [here](https://www.figma.com/file/mILf7E78rQudquceetkNTQ/Prototype?type=design&mode=design&t=GL4ip6dvZd5B2aBY-1) 
 
 ### Installations
 - [MongoDB Compass](https://www.mongodb.com/try/download/community) 
