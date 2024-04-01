@@ -10,7 +10,10 @@ Job Connect is a software that helps connect between applicant and recruiter
 - UX/UI Design (Figma):
   - Wireframe: [here](https://www.figma.com/file/RAuxQCrMLKrQTj0H8v1aZD/Wirefram-(Updated)?type=design&mode=design&t=GL4ip6dvZd5B2aBY-1)
   - Mock up: [here](https://www.figma.com/file/KSyqy0WVClyYP052FyrlZg/JobConnect?type=design&node-id=0%3A1&mode=design&t=GL4ip6dvZd5B2aBY-1)
-  - Prototype: [here](https://www.figma.com/file/mILf7E78rQudquceetkNTQ/Prototype?type=design&mode=design&t=GL4ip6dvZd5B2aBY-1) 
+  - Prototype: [here](https://www.figma.com/file/mILf7E78rQudquceetkNTQ/Prototype?type=design&mode=design&t=GL4ip6dvZd5B2aBY-1)
+- Use-case diagram: ![title](https://res.cloudinary.com/dmjsmmt3h/image/upload/v1711949073/v31dkogpdgu5kr8yrdyn.png)
+- ERD: ![title](https://res.cloudinary.com/dmjsmmt3h/image/upload/v1711949211/qbtlk7da4n7sfzvfsbkq.png)
+- Database design (No SQL): ![title](https://res.cloudinary.com/dmjsmmt3h/image/upload/v1711949295/rtjtgctqobj9smrmrtuy.png)
 
 ### Installations
 - [MongoDB Compass](https://www.mongodb.com/try/download/community) 
